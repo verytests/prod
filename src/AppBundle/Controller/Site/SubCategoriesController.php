@@ -56,7 +56,7 @@ class SubCategoriesController extends BaseController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      *
-     * @Route("/forkidstests/{id}", name="forkids_sub", methods={"GET"})
+     * @Route("/forkidstests/{id}", name="for_kids_sub", methods={"GET"})
      */
     public function forKidsAction(Request $request, $id)
     {
