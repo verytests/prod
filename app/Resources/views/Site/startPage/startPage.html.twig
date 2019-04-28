@@ -1,55 +1,55 @@
 {% extends 'Site/startPage/body.html.twig' %}
 
 {% block imgSrcDay %}
-    {% if testDay.categoryId == constant('App\\Model\\Categories::FUNNY') %}
+    {% if testDay.categoryId == constant('AppBundle\\Model\\Categories::FUNNY') %}
         {{ asset('public/images/site/tests/default_funny.jpg') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::FOR_KIDS') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::FOR_KIDS') %}
         {{ asset('public/images/site/tests/default_kids.jpg') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::PSYCHOLOGY') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::PSYCHOLOGY') %}
         {{ asset('public/images/site/tests/default_psychology.jpg') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::LOVE_TESTS') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::LOVE_TESTS') %}
         {{ asset('public/images/site/tests/default_love.jpg') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::ONLY_FOR_MEN') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::ONLY_FOR_MEN') %}
         {{ asset('public/images/site/tests/default_men.jpg') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::ONLY_FOR_WOMEN') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::ONLY_FOR_WOMEN') %}
         {{ asset('public/images/site/tests/default_women.png') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::PERSONALITY') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::PERSONALITY') %}
         {{ asset('public/images/site/tests/default_personality.png') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::IQ_TESTS') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::IQ_TESTS') %}
         {{ asset('public/images/site/tests/default_iq.jpg') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::ACTOR') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::ACTOR') %}
         {{ asset('public/images/site/tests/default_actor.png') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::BOOKS') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::BOOKS') %}
         {{ asset('public/images/site/tests/default_book.jpg') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::CAREER') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::CAREER') %}
         {{ asset('public/images/site/tests/default_career.jpg') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::EQ_TESTS') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::EQ_TESTS') %}
         {{ asset('public/images/site/tests/default_eq.jpg') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::FAN') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::FAN') %}
         {{ asset('public/images/site/tests/default_fan.jpg') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::FAN_FICTION') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::FAN_FICTION') %}
         {{ asset('public/images/site/tests/default_fan_fiction.jpg') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::GAME') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::GAME') %}
         {{ asset('public/images/site/tests/default_game.jpeg') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::HEALTH') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::HEALTH') %}
         {{ asset('public/images/site/tests/default_health.jpg') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::KNOWLEDGE') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::KNOWLEDGE') %}
         {{ asset('public/images/site/tests/default_knowledge.jpg') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::LANGUAGE') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::LANGUAGE') %}
         {{ asset('public/images/site/tests/default_language.jpg') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::MUSIC') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::MUSIC') %}
         {{ asset('public/images/site/tests/default_music.jpg') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::MOVIE') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::MOVIE') %}
         {{ asset('public/images/site/tests/default_movie.png') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::PURITY_TESTS') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::PURITY_TESTS') %}
         {{ asset('public/images/site/tests/default_purity.jpg') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::SPORT') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::SPORT') %}
         {{ asset('public/images/site/tests/default_sport.jpg') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::THINK') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::THINK') %}
         {{ asset('public/images/site/tests/default_memory.jpg') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::TV_SHOW') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::TV_SHOW') %}
         {{ asset('public/images/site/tests/default_tv.gif') }}
-    {% elseif testDay.categoryId == constant('App\\Model\\Categories::YOUTUBE') %}
+    {% elseif testDay.categoryId == constant('AppBundle\\Model\\Categories::YOUTUBE') %}
         {{ asset('public/images/site/tests/default_youtube.jpg') }}
     {% else %}
         {{ asset('public/images/site/tests/default_test_image.png') }}
@@ -57,55 +57,55 @@
 {% endblock %}
 
 {% block imgSrcWeek %}
-    {% if testWeek.categoryId == constant('App\\Model\\Categories::FUNNY') %}
+    {% if testWeek.categoryId == constant('AppBundle\\Model\\Categories::FUNNY') %}
         {{ asset('images/site/tests/default_funny.jpg') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::FOR_KIDS') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::FOR_KIDS') %}
         {{ asset('images/site/tests/default_kids.jpg') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::PSYCHOLOGY') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::PSYCHOLOGY') %}
         {{ asset('images/site/tests/default_psychology.jpg') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::LOVE_TESTS') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::LOVE_TESTS') %}
         {{ asset('images/site/tests/default_love.jpg') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::ONLY_FOR_MEN') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::ONLY_FOR_MEN') %}
         {{ asset('images/site/tests/default_men.jpg') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::ONLY_FOR_WOMEN') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::ONLY_FOR_WOMEN') %}
         {{ asset('images/site/tests/default_women.png') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::PERSONALITY') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::PERSONALITY') %}
         {{ asset('images/site/tests/default_personality.png') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::IQ_TESTS') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::IQ_TESTS') %}
         {{ asset('images/site/tests/default_iq.jpg') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::ACTOR') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::ACTOR') %}
         {{ asset('images/site/tests/default_actor.png') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::BOOKS') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::BOOKS') %}
         {{ asset('images/site/tests/default_book.jpg') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::CAREER') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::CAREER') %}
         {{ asset('images/site/tests/default_career.jpg') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::EQ_TESTS') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::EQ_TESTS') %}
         {{ asset('images/site/tests/default_eq.jpg') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::FAN') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::FAN') %}
         {{ asset('images/site/tests/default_fan.jpg') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::FAN_FICTION') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::FAN_FICTION') %}
         {{ asset('images/site/tests/default_fan_fiction.jpg') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::GAME') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::GAME') %}
         {{ asset('images/site/tests/default_game.jpeg') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::HEALTH') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::HEALTH') %}
         {{ asset('images/site/tests/default_health.jpg') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::KNOWLEDGE') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::KNOWLEDGE') %}
         {{ asset('images/site/tests/default_knowledge.jpg') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::LANGUAGE') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::LANGUAGE') %}
         {{ asset('images/site/tests/default_language.jpg') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::MUSIC') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::MUSIC') %}
         {{ asset('images/site/tests/default_music.jpg') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::MOVIE') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::MOVIE') %}
         {{ asset('images/site/tests/default_movie.png') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::PURITY_TESTS') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::PURITY_TESTS') %}
         {{ asset('images/site/tests/default_purity.jpg') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::SPORT') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::SPORT') %}
         {{ asset('images/site/tests/default_sport.jpg') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::THINK') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::THINK') %}
         {{ asset('images/site/tests/default_memory.jpg') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::TV_SHOW') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::TV_SHOW') %}
         {{ asset('images/site/tests/default_tv.gif') }}
-    {% elseif testWeek.categoryId == constant('App\\Model\\Categories::YOUTUBE') %}
+    {% elseif testWeek.categoryId == constant('AppBundle\\Model\\Categories::YOUTUBE') %}
         {{ asset('images/site/tests/default_youtube.jpg') }}
     {% else %}
         {{ asset('images/site/tests/default_test_image.png') }}
@@ -113,55 +113,55 @@
 {% endblock %}
 
 {% block imgSrcMonth %}
-    {% if testMonth.categoryId == constant('App\\Model\\Categories::FUNNY') %}
+    {% if testMonth.categoryId == constant('AppBundle\\Model\\Categories::FUNNY') %}
         {{ asset('images/site/tests/default_funny.jpg') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::FOR_KIDS') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::FOR_KIDS') %}
         {{ asset('images/site/tests/default_kids.jpg') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::PSYCHOLOGY') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::PSYCHOLOGY') %}
         {{ asset('images/site/tests/default_psychology.jpg') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::LOVE_TESTS') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::LOVE_TESTS') %}
         {{ asset('images/site/tests/default_love.jpg') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::ONLY_FOR_MEN') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::ONLY_FOR_MEN') %}
         {{ asset('images/site/tests/default_men.jpg') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::ONLY_FOR_WOMEN') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::ONLY_FOR_WOMEN') %}
         {{ asset('images/site/tests/default_women.png') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::PERSONALITY') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::PERSONALITY') %}
         {{ asset('images/site/tests/default_personality.png') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::IQ_TESTS') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::IQ_TESTS') %}
         {{ asset('images/site/tests/default_iq.jpg') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::ACTOR') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::ACTOR') %}
         {{ asset('images/site/tests/default_actor.png') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::BOOKS') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::BOOKS') %}
         {{ asset('images/site/tests/default_book.jpg') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::CAREER') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::CAREER') %}
         {{ asset('images/site/tests/default_career.jpg') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::EQ_TESTS') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::EQ_TESTS') %}
         {{ asset('images/site/tests/default_eq.jpg') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::FAN') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::FAN') %}
         {{ asset('images/site/tests/default_fan.jpg') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::FAN_FICTION') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::FAN_FICTION') %}
         {{ asset('images/site/tests/default_fan_fiction.jpg') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::GAME') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::GAME') %}
         {{ asset('images/site/tests/default_game.jpeg') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::HEALTH') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::HEALTH') %}
         {{ asset('images/site/tests/default_health.jpg') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::KNOWLEDGE') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::KNOWLEDGE') %}
         {{ asset('images/site/tests/default_knowledge.jpg') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::LANGUAGE') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::LANGUAGE') %}
         {{ asset('images/site/tests/default_language.jpg') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::MUSIC') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::MUSIC') %}
         {{ asset('images/site/tests/default_music.jpg') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::MOVIE') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::MOVIE') %}
         {{ asset('images/site/tests/default_movie.png') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::PURITY_TESTS') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::PURITY_TESTS') %}
         {{ asset('images/site/tests/default_purity.jpg') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::SPORT') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::SPORT') %}
         {{ asset('images/site/tests/default_sport.jpg') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::THINK') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::THINK') %}
         {{ asset('images/site/tests/default_memory.jpg') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::TV_SHOW') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::TV_SHOW') %}
         {{ asset('images/site/tests/default_tv.gif') }}
-    {% elseif testMonth.categoryId == constant('App\\Model\\Categories::YOUTUBE') %}
+    {% elseif testMonth.categoryId == constant('AppBundle\\Model\\Categories::YOUTUBE') %}
         {{ asset('images/site/tests/default_youtube.jpg') }}
     {% else %}
         {{ asset('images/site/tests/default_test_image.png') }}
