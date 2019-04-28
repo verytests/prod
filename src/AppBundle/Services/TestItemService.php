@@ -112,7 +112,7 @@ class TestItemService
         $this->em = $em;
     }
 
-    public function addTest(array $testData): array
+    public function addTest($testData)
     {
         $testItem = $this->testItemFactory->create($testData['name'], $testData['desc'], $testData['testImage'], $testData['category'], $testData['subCategory']);
         try {
@@ -227,7 +227,7 @@ class TestItemService
         return $query;
     }
 
-    public function getResultOfTest(array $resultData, $testId)
+    public function getResultOfTest($resultData, $testId)
     {
         $totalSum = 0;
 
@@ -266,7 +266,7 @@ class TestItemService
         return $this->em->getRepository(TestItem::class)->getTestsByQuery($query, $category);
     }
 
-    public function deleteTest($id):string
+    public function deleteTest($id)
     {
         $test = $this->em->getRepository(TestItem::class)->getTestById($id);
 
@@ -297,7 +297,7 @@ class TestItemService
         return ServiceResponse::SUCCESS;
     }
 
-    public function setIsChecked(int $id, bool $value): string
+    public function setIsChecked($id,$value)
     {
        $test = $this->em->getRepository(TestItem::class)->findOneBy(['id' => $id]);
 
