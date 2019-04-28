@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block layout %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/includes/css/privateLayout.css') }}">
+
+    <div class="container-fluid" id="layout">
+        <div class="row" id="layoutRow">
+            <div class="" id="privateNav">
+                {% block navbar %}
+
+                {% endblock %}
+            </div>
+            <div class="" id="privateBody">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        {% block body %}
+
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

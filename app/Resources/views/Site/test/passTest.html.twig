@@ -1,0 +1,72 @@
+{% extends 'publicNavbar.html.twig' %}
+
+{% block metaTitle %}Pass the test: {{ test.test.name }}{% endblock %}
+{% block metaDesc %}{{ test.test.description }} | pass the test on verytests.com {% endblock %}
+{% block metaKeywords %}{% endblock %}
+{% block title %}{{ test.test.name }}{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="card text-center mobileText">
+            <div class="card-header">
+                <h1>{{ test.test.name }}</h1>
+            </div>
+            <div class="card-body">
+                <div class="divset">
+                    <img class="img-thumbnail"
+                    src="{% if test.test.mainImage == '' %}{% block imgSrc %}{% endblock %}{% else %}{{ test.test.mainImage }}{% endif %}"
+                         style="max-height: 300px"
+                    >
+                </div>
+                <div class="card-header text-center fatFont">
+                    <h3>{{ test.test.description }}</h3>
+                </div>
+                <div class="container divset">
+                    <form method="post" action="{{ path('test_result', {name: test.test.urlName}) }}">
+                        {% set questionCounter = 1 %}
+                        {% for question in test.questions %}
+                            <div class="card divset">
+                                <div class="divset wow zoomIn jumbotron mobileHeaderText">
+                                    <h3 class="fatFont mobileHeaderText">{{ question.text }}</h3>
+                                </div>
+                                <div class="card-body">
+                                {% set answerCounter = 1 %}
+                                {% for answer in test.answers %}
+                                    {% if question.id == answer.questionId %}
+                                        <div class="form-row justify-content-around">
+                                        <div class="custom-control custom-radio divset">
+
+                                            <input value="{{ answer.id }}" type="radio" class="custom-control-input"
+                                                   id="
+                                    answer{{ questionCounter }}_{{ answerCounter }}"
+                                                   name="answer{{ questionCounter }}"
+                                                    {% if answerCounter == 1 %}
+                                                        checked
+                                                    {% endif %}
+                                            >
+
+                                            <label class="custom-control-label fatFont" for="
+                                    answer{{ questionCounter }}_{{ answerCounter }}">
+                                                <h3 class="mobileText">{{ answer.text }}</h3>
+                                            </label>
+                                        </div>
+                                        </div>
+                                        {% set answerCounter = answerCounter + 1 %}
+                                    {% endif %}
+                                {% endfor %}
+                                </div>
+                                {% set questionCounter = questionCounter + 1 %}
+                            </div>
+                        {% endfor %}
+
+                        <div class="card-footer divset">
+                            <div class="divset">
+                                <input type="submit" class="btn btn-outline-info" value="Finish">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

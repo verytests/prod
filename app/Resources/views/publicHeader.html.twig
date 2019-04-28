@@ -1,0 +1,48 @@
+{% extends 'publicLayout.html.twig' %}
+
+{% block publicHeader %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/includes/css/publicHeader.css') }}">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{ path('site_start_page') }}">
+            <img src="{{ asset('favicon.ico') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+            VeryTests.com
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="headerSupportedContent">
+
+            {% if app.user.getId is defined %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-success text-white fatFont" href="{{ path('private_start_page') }}">Private</a>
+                    </li>
+                    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_MODERATOR') %}
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-white fatFont" href="{{ path('admin_start_page') }}">Admin</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            {% else %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-success text-white fatFont" href="{{ path('private_login_page') }}">LogIn</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-white fatFont" href="{{ path('signup_page') }}">SignUp</a>
+                    </li>
+                </ul>
+            {% endif %}
+            <form class="form-inline my-2 my-lg-0" method="get" action="{{ path('site_search') }}">
+                <input name="query" class="form-control mr-sm-2 fatFont" type="search" placeholder="Search" aria-label="Search"
+                       {% if search_query is defined %}
+                       value="{{ search_query }}"
+                       {% endif %}
+                    >
+                <button class="btn btn-outline-success my-2 my-sm-0 fatFont" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+{% endblock %}

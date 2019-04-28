@@ -1,0 +1,11 @@
+#headerSupportedContent ul li {
+    margin-left: 5%;
+}
+
+@media (max-width: 1000px) {
+    #headerSupportedContent ul li {
+        margin-left: 5%;
+        margin-bottom: 3%;
+        margin-top: 1%;
+    }
+}

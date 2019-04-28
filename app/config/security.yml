@@ -1,0 +1,47 @@
+security:
+    encoders:
+        AppBundle\Entity\Admin: bcrypt
+        AppBundle\Entity\User: bcrypt
+
+    providers:
+        app_admin_provider:
+            entity:
+                class: AppBundle\Entity\Admin
+                property: login
+        user_private_provider:
+            entity:
+                class: AppBundle\Entity\User
+                property: login
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        admin:
+            anonymous: true
+            pattern: ^/admin
+            guard:
+                provider: app_admin_provider
+                authenticators:
+                    - AppBundle\Security\AdminLoginAuthenticator
+            logout:
+                path: admin_logout
+
+        main:
+            anonymous: true
+            pattern: ^/
+            guard:
+                provider: user_private_provider
+                authenticators:
+                    - AppBundle\Security\UserLoginAuthenticator
+            logout:
+                path: user_logout
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /
+
+    access_control:
+        - { path: ^/admin/, roles: ['ROLE_ADMIN', 'ROLE_MODERATOR']}
+        - { path: ^/private/, roles: ['ROLE_ADMIN', 'ROLE_MODERATOR', 'ROLE_USER']}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block layout %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/includes/css/publicLayout.css') }}">
+    <div class="container-fluid" id="publicHeader">
+        <div class="row" id="publicHeaderRow">
+            <div class="card bg-light">
+                <div class="card-body" id="header">
+                    {% block publicHeader %}
+
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="layout" style="margin-bottom: 25px">
+        <div class="row" id="layoutRow">
+            <div class="" id="publicNav">
+                {% block navbar %}
+
+                {% endblock %}
+            </div>
+            <div class="" id="publicBody">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        {% block body %}
+
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

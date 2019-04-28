@@ -1,0 +1,117 @@
+{% extends 'publicNavbar.html.twig' %}
+
+{% block metaTitle %}
+    {% if categoryMeta is defined %}
+{{ categoryMeta.title }}
+    {% endif %}
+{% endblock %}
+
+{% block metaDesc %}
+    {% if categoryMeta is defined %}
+{{ categoryMeta.description }}
+    {% endif %}
+{% endblock %}
+
+{% block metaKeywords %}
+{{ keywords|join(', ') }}
+{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/includes/css/main/userStatistic.css') }}">
+    {% if tests is not empty %}
+    <div class="container-fluid">
+        <div class="card-header">
+            <div class="display-4 text-center">
+                Search
+            </div>
+            <div class="divset">
+                <form method="GET" action="{% block searchForm %}{% endblock %}">
+                    <div class="form-row justify-content-center">
+                        <div class="col-3">
+                            <input name="q" class="form-control searchTagInp" placeholder="Search">
+                        </div>
+                        <div class="col-1">
+                            <input type="submit" class="btn btn-outline-primary" value="Search">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row justify-content-center">
+                {% block searchNav %}{% endblock %}
+            </div>
+            <div class="row justify-content-center">
+                <div class="divset">
+                    <a class="btn btn-primary" data-toggle="collapse" href="#subCategories" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Watch sub categories
+                    </a>
+                </div>
+            </div>
+                <div class="collapse divset" id="subCategories">
+                    <div class="card card-body">
+                        <div class="row">
+                            {% block subCategories %}
+
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="container-fluid" style="margin-left: 2%">
+        <div class="row">
+            {% for test in tests %}
+                <div class="card" style="width: 18rem; margin-left: 3%; margin-top: 3%">
+                    <img src="
+            {% if test.imageUrl != '' %}
+                {{ test.imageUrl }}
+            {% else %}
+            {% block imgSrc %}{% endblock %}
+            {% endif %}
+            " class="card-img-top" alt="img" style="max-height: 350px">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ test.name }}</h5>
+                        <p class="card-text">{{ test.shortDescription }}</p>
+                        <a href="{{ path('test_pass', { 'name': test.urlName}) }}" class="btn btn-outline-primary">Pass the
+                            test!</a>
+                        <div class="divset">
+                            <button class="btn btn-sm btn-outline-info saveBtn" data-id="{{ test.id }}"> Save </button>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                <span class="text-muted">
+                    Created: {{ test.creationDate|date('Y-m-d | H:m:s') }}
+                </span>
+                        <div>
+                              <span class="text-muted">
+                    Passed: <span class="badge badge-success">{{ test.passedCount }}</span> times
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% if tests is empty %}
+                <div class="container-fluid text-center">
+                    <div class="display-4 mobileText">
+                        <h1>Unfortunately there are none tests in this category :( </h1>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        {% if tests is not empty %}
+        <div class="card-footer divset">
+            <nav aria-label="Page navigation example">
+                <div class="pagination">
+                    {{ knp_pagination_render(tests, 'others/twitter_bootstrap_v4_pagination.html.twig') }}
+                </div>
+            </nav>
+        </div>
+        {% endif %}
+    </div>
+    {% if app.user.getId is defined %}
+        <script rel="script" src="{{ asset('public/includes/js/saveTest/saveTest.js') }}"></script>
+        <script rel="script" src="{{ asset('public/includes/js/saveTest/getSavedTests.js') }}"></script>
+    {% else %}
+        <script rel="script" src="{{ asset('public/includes/js/saveTest/saveTestNonAuth.js') }}"></script>
+    {% endif %}
+{% endblock %}

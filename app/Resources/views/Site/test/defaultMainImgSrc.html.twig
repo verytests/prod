@@ -1,0 +1,57 @@
+{% extends 'Site/test/passTest.html.twig' %}
+
+{% block imgSrc %}
+    {% if test.test.categoryId == constant('App\\Model\\Categories::FUNNY') %}
+        {{ asset('public/images/site/tests/main/default_main.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::FOR_KIDS') %}
+        {{ asset('public/images/site/tests/main/default_kids.jpeg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::PSYCHOLOGY') %}
+        {{ asset('public/images/site/tests/main/default_psychology.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::LOVE_TESTS') %}
+        {{ asset('public/images/site/tests/main/default_love.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::ONLY_FOR_MEN') %}
+        {{ asset('public/images/site/tests/main/default_men.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::ONLY_FOR_WOMEN') %}
+        {{ asset('public/images/site/tests/main/default_women.png') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::PERSONALITY') %}
+        {{ asset('public/images/site/tests/main/default_personality.webp') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::IQ_TESTS') %}
+        {{ asset('public/images/site/tests/main/default_brain.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::ACTOR') %}
+        {{ asset('public/images/site/tests/main/default_actor.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::BOOKS') %}
+        {{ asset('public/images/site/tests/main/default_book.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::CAREER') %}
+        {{ asset('public/images/site/tests/main/default_career.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::EQ_TESTS') %}
+        {{ asset('public/images/site/tests/main/default_eq.jpeg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::FAN') %}
+        {{ asset('public/images/site/tests/main/default_fan.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::FAN_FICTION') %}
+        {{ asset('public/images/site/tests/main/default_fan_fiction.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::GAME') %}
+        {{ asset('public/images/site/tests/main/default_game.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::HEALTH') %}
+        {{ asset('public/images/site/tests/main/default_health.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::KNOWLEDGE') %}
+        {{ asset('public/images/site/tests/main/default_knowledge.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::LANGUAGE') %}
+        {{ asset('public/images/site/tests/main/default_language.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::MUSIC') %}
+        {{ asset('public/images/site/tests/main/default_music.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::MOVIE') %}
+        {{ asset('public/images/site/tests/main/default_movie.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::PURITY_TESTS') %}
+        {{ asset('public/images/site/tests/main/default_purity.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::SPORT') %}
+        {{ asset('public/images/site/tests/main/default_sport.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::THINK') %}
+        {{ asset('public/images/site/tests/main/default_memory.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::TV_SHOW') %}
+        {{ asset('public/images/site/tests/main/default_tv.jpg') }}
+    {% elseif test.test.categoryId == constant('App\\Model\\Categories::YOUTUBE') %}
+        {{ asset('public/images/site/tests/main/default_youtube.jpg') }}
+    {% else %}
+        {{ asset('public/images/site/tests/main/default_main.jpg') }}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'Admin/adminNavbar.html.twig' %}
+
+{% block navLogs %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <form method="get" action="{{ path('admin_logs') }}">
+    <div class="card-header">
+            <div class="row justify-content-around">
+                Level:<select id="level" name="level" class="form-control" style="width: 10rem">
+                    <option value=""></option>
+                    {% for level in levels %}
+                        <option value="{{ level }}">{{ level }}</option>
+                    {% endfor %}
+                </select>
+                Source:<select id="source" name="source" class="form-control" style="width: 10rem">
+                    <option value=""></option>
+                    {% for source in sources %}
+                        <option value="{{ source }}">{{ source }}</option>
+                    {% endfor %}
+                </select>
+                Section:<select id="section" name="section" class="form-control" style="width: 10rem">
+                    <option value=""></option>
+                    {% for section in sections %}
+                        <option value="{{ section }}">{{ section }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+    </div>
+        <div class="card-header">
+            <div class="row justify-content-around">
+                <label for="start_date">
+                    Start Date:
+                </label>
+                <input id="start_date" name="start_date" class="form-control" style="width: 10rem">
+                <label for="end_date">
+                    End Date:
+                </label>
+                <input id="end_date" name="end_date" class="form-control" style="width: 10rem">
+
+                <button class="btn btn-outline-success">Search</button>
+            </div>
+        </div>
+    </form>
+    <div class="container-fluid">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Data</th>
+                <th scope="col">Source</th>
+                <th scope="col">Level</th>
+                <th scope="col">Section</th>
+                <th scope="col">Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if logs is not empty %}
+                {% set dataCounter = 1 %}
+                {% for log in logs %}
+                    <tr>
+                        <td>{{ log.id }}</td>
+                        <td>
+                            <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#data{{ dataCounter }}" aria-expanded="false" aria-controls="data{{ dataCounter }}">
+                                Show data
+                            </button>
+                            <div class="collapse divset" id="data{{ dataCounter }}">
+                                <div class="card card-body">
+                                    {{ log.data|json_encode() }}
+                                </div>
+                            </div>
+                        </td>
+                        <td>{{ log.source }}</td>
+                        <td>{{ log.level }}</td>
+                        <td>{{ log.section }}</td>
+                        <td>{{ log.date|date('Y-m-d | H:m:s') }}</td>
+                    </tr>
+                    {% set dataCounter = dataCounter + 1 %}
+                {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <nav aria-label="Page navigation example">
+            <div class="pagination">
+                {{ knp_pagination_render(logs, 'others/twitter_bootstrap_v4_pagination.html.twig') }}
+            </div>
+        </nav>
+    </div>
+</div>
+
+    <script src="{{ asset('public/libs/js/jquery.maskedinput.min.js') }}"></script>
+    <script>
+        $(function(){
+
+            $("#start_date").mask("9999/99/99", {placeholder: "yyyy/mm/dd"});
+            $("#end_date").mask("9999/99/99", {placeholder: "yyyy/mm/dd"});
+        });
+    </script>
+{% endblock %}

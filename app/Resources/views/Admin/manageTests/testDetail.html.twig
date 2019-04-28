@@ -1,0 +1,96 @@
+{% extends 'Admin/adminNavbar.html.twig' %}
+
+{% block navManageTests %}
+    active
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid text-center">
+        <div class="card-header">
+            <h4>Тест: {{ test.test.name }}</h4>
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Passed count</th>
+                <th scope="col">Creation date</th>
+                <th scope="col">Preview</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if test is defined %}
+                <tr>
+                    <td>{{ test.test.name }}</td>
+                    <td>{{ test.test.passedCount }}</td>
+                    <td>{{ test.test.creationDate|date('Y-m-d | H:m:s') }}</td>
+                    <td><a href="{{ path('admin_preview_test', {'testId': test.test.id}) }}" class="btn btn-outline-success">Preview</a></td>
+                </tr>
+            {% endif %}
+            </tbody>
+        </table>
+            <div class="container-fluid text-center divset">
+                <div class="alert alert-dark"><h1>Name</h1></div>
+                <div class="divset">
+                    <input class="form-control" data-id="{{ test.test.id }}" placeholder="Header" data-type="header" type="text" value="{{ test.test.name }}">
+                </div>
+            </div>
+            <div class="container-fluid text-center divset">
+                <div class="alert alert-dark"><h1>Description</h1></div>
+                <div class="divset">
+                    <input class="form-control" type="text" data-id="{{ test.test.id }}" data-type="desc" placeholder="Description" value="{{ test.test.description }}">
+                </div>
+            </div>
+            <div class="container-fluid text-center divset">
+                <div class="alert alert-dark"><h1>Preview image</h1></div>
+                <div class="divset">
+                    <input class="form-control" data-type="imageUrl" data-id="{{ test.test.id }}" placeholder="imageUrl" type="text" value="{{ test.test.imageUrl }}">
+                </div>
+            </div>
+            <div class="container-fluid text-center divset">
+                <div class="alert alert-dark"><h1>Main image</h1></div>
+                <div class="divset">
+                    <input class="form-control" data-type="mainImage" data-id="{{ test.test.id }}" placeholder="imageUrl" type="text" value="{{ test.test.mainImage }}">
+                </div>
+            </div>
+            <div class="container-fluid text-center divset">
+                <div class="alert alert-dark"><h1>Questions</h1></div>
+                <div class="divset">
+                    {% for question in test.questions %}
+                        <div class="divset">
+                            <input class="form-control" data-type="question" data-id="{{ question.id }}" type="text" placeholder="Question" value="{{ question.text }}">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="container-fluid text-center divset">
+                <div class="alert alert-dark"><h1>Answers</h1></div>
+                <div class="divset">
+                    {% for answer in test.answers %}
+                        <div class="divset">
+                            <input class="form-control" data-type="answer" data-id="{{ answer.id }}" type="text" placeholder="Answer" value="{{ answer.text }}">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="container-fluid text-center divset">
+                <div class="alert alert-dark"><h1>Results</h1></div>
+                <div class="divset">
+                    {% for result in test.results %}
+                        <div class="divset">
+                            <input class="form-control" data-type="result" type="text" data-id="{{ result.id }}" placeholder="Result" value="{{ result.text }}">
+                        </div>
+                        <div class="divset">
+                            <input class="form-control" data-type="resultImg" type="text" data-id="{{ result.id }}" placeholder="{% if result.imageUrl == '' %}imageUrl{% else %}imageUrl{% endif %}" value="{{ result.imageUrl }}">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="card-footer divset">
+                <button id="save" class="btn btn-outline-danger">Save</button>
+            </div>
+    </div>
+
+    <script rel="script" src="{{ asset('public/includes/js/admin/manageTests/updateTest.js') }}"></script>
+
+{% endblock %}

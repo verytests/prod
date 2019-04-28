@@ -1,0 +1,17 @@
+{% extends 'Site/defaultImgSrc.html.twig' %}
+
+{% block navPopular %}active{% endblock %}
+
+
+{% block title %} Popular tests on verytests.com {% endblock %}
+
+{% block searchNav %}
+    {% if keywords is defined %}
+        {% for keyword in keywords %}
+            <a href="{{ path('categories_popular_search', {'q': keyword}) }}" class="btn btn-outline-success searchTag fatFont">{{ keyword|capitalize }}</a>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block searchForm %}{{ path('categories_popular_search') }}{% endblock %}
+
