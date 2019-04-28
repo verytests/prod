@@ -76,7 +76,7 @@ body {
 
     #publicHeaderRow{
         display: grid;
-        grid-template-columns: 99%;
+        grid-template-columns: 95%;
         margin-left: 0;
         margin-right: 3%;
     }
@@ -103,7 +103,7 @@ body {
 
     #publicHeaderRow{
         display: grid;
-        grid-template-columns: 100%;
+        grid-template-columns: 93%;
         margin-left: 0;
         margin-right: 0;
     }
