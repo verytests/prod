@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('public/includes/css/publicLayout.css') }}">
     <div class="container-fluid" id="publicHeader">
         <div class="row" id="publicHeaderRow">
-            <div class="card bg-light">
+            <div class="card bg-light col-12">
                 <div class="card-body" id="header">
                     {% block publicHeader %}
 
@@ -14,14 +14,20 @@
         </div>
     </div>
 
+    <div class="container-fluid">
+        <div class="row" id="responsiveNavHolder">
+
+        </div>
+    </div>
+
     <div class="container-fluid" id="layout" style="margin-bottom: 25px">
         <div class="row" id="layoutRow">
-            <div class="" id="publicNav">
+            <div class="col-3" id="publicNav">
                 {% block navbar %}
 
                 {% endblock %}
             </div>
-            <div class="" id="publicBody">
+            <div class="col-9" id="publicBody">
                 <div class="card bg-light">
                     <div class="card-body">
                         {% block body %}
