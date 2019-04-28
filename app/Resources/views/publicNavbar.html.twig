@@ -7,6 +7,9 @@
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <div id="navCat" style="color: blue" class="display-4">
+        Categories
+        </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto flex-column">
                 <li class="nav-item {% block navMain %}{% endblock %}">
@@ -143,4 +146,11 @@
             </ul>
         </div>
     </nav>
+    <script>
+        $(document).ready(function () {
+            if($(window).width() > 950) {
+                $('#navCat').hide();
+            }
+        })
+    </script>
 {% endblock %}

@@ -47,7 +47,7 @@ body {
 
 #publicBody{
     margin-bottom: 1em;
-    margin-left: 3%;
+    margin-left: 1em;
 }
 
 #publicHeaderRow{
@@ -64,7 +64,8 @@ body {
 
 #layoutRow {
     display: grid;
-    grid-template-columns: 20% 77%;
+    grid-template-columns: 20% 79%;
+    margin-right: 1em;
 }
 
 @media (max-width: 1000px) {
