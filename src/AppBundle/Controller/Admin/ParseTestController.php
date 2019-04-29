@@ -142,13 +142,14 @@ class ParseTestController extends BaseController
 
             $testData = $testParser->parseTest($url, $category, $subCatId);
 
-            try {
+            try
+            {
                 $testService->addTest($testData);
                 $link->setIsAdded(true);
                 $this->getDoctrine()->getManager()->persist($link);
                 $this->getDoctrine()->getManager()->flush();
-            } catch (\Exception $e) {
-                continue;
+            } catch (\Exception $e)
+            {
             }
         }
 
