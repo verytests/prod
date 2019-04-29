@@ -152,6 +152,7 @@ class ParseTestController extends BaseController
                 $em->flush();
             } catch (\Exception $e)
             {
+                return $this->errorResponse(['error' => $e->getMessage()]);
             }
         }
 
