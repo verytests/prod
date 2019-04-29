@@ -77,9 +77,9 @@ class ParseTestController extends BaseController
     {
         $em = $this->getDoctrine()->getManager();
 
-        $link = $em->getRepository(ParsedLink::class)->findBy(['id' => $request->request->get('link_id')]);
+        $link = $em->getRepository(ParsedLink::class)->findBy(['id' => $request->query->get('link_id')]);
 
-        $link->setIsAdded($request->request->get('value'));
+        $link->setIsAdded($request->query->get('value'));
 
         $em->persist($link);
         $em->flush();
