@@ -239,6 +239,6 @@ class HtmlTestParser
     {
         $res = preg_replace('/[[:^print:]]/', '', $text);
 
-        return preg_replace("/[^a-zA-Z.,?0-9\s]/", "", $res);
+        return preg_replace("/[^a-zA-Z.,-?0-9\s]/", "", $res);
     }
 }
