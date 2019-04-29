@@ -40,6 +40,34 @@ class ParseTestController extends BaseController
     }
 
     /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @Route("/testparser/{id}", name="test_parser_show_links", methods={"GET"})
+     */
+    public function show(Request $request, $id)
+    {
+        /** @var TestItemService $testService */
+        $testService = $this->get('app.testItem');
+
+        $categories = $testService->getCategories();
+
+        $query = $this->getDoctrine()->getManager()->getRepository(ParsedLink::class)->findBy(['categoryId' => $id]);
+
+        $paginator = $this->get('knp_paginator');
+
+        $links = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            $request->query->getInt('limit', 12)
+        );
+
+        return $this->render('Admin/parseTest/show.html.twig', [
+            'categories' => $categories,
+            'links' => $links
+        ]);
+    }
+
+    /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      *
@@ -79,8 +107,13 @@ class ParseTestController extends BaseController
     {
         $amount = $request->request->get('amount');
         $category = $request->request->get('category');
+        $link = $request->request->get('link');
 
-        $links = $this->getDoctrine()->getManager()->getRepository(ParsedLink::class)->getLinksForCategory($category, $amount);
+        if(!$link) {
+            $links = $this->getDoctrine()->getManager()->getRepository(ParsedLink::class)->getLinksForCategory($category, $amount);
+        } else {
+            $links = $this->getDoctrine()->getManager()->getRepository(ParsedLink::class)->findBy(['link' => $link]);
+        }
 
         /** @var HtmlTestParser $testParser */
         $testParser = $this->get('app.htmlTestParser');
@@ -129,12 +162,13 @@ class ParseTestController extends BaseController
         $result = [];
 
         $sql = '
-        SELECT COUNT(id) as amount, category_id FROM parsed_links WHERE category_id = :catId AND is_added = 0
+        SELECT COUNT(id) as amount, category_id FROM parsed_links WHERE category_id = :catId AND is_added = :status
         ';
 
         foreach ($categories as $category) {
             $params = [
-                'catId' => $category->getId()
+                'catId' => $category->getId(),
+                'status' => 0
             ];
 
             $query = $connection->prepare($sql);

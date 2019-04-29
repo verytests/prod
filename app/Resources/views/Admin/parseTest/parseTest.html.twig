@@ -58,7 +58,7 @@
             <tbody>
             {% for cat in available %}
                 <tr>
-                    <td>{{ cat.category_id }}</td>
+                    <td><a class="btn btn-outline-primary" href="{{ path('admin_test_parser_show_links', {'id': cat.category_id}) }}">{{ cat.category_id }}</a></td>
                     <td>{{ cat.amount }}</td>
                 </tr>
             {% endfor %}

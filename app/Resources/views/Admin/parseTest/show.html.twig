@@ -1,0 +1,53 @@
+{% extends 'Admin/adminNavbar.html.twig' %}
+
+{% block navParseTest %}
+    active
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <form method="post" action="{{ path('admin_test_parser_from_db_action') }}">
+            <div class="divset">
+                <input class="form-control" type="text" name="link">
+            </div>
+            <div class="divset">
+                <select name="category" class="form-control">
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.id }} : {{ category.category }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="divset">
+                <input class="btn btn-outline-success" value="Submit" type="submit">
+            </div>
+        </form>
+    </div>
+    <div class="container-fluid">
+        <div class="display-4">
+            Available links
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Link</th>
+                <th scope="col">Is added</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for link in links %}
+                <tr>
+                    <td>{{ link.link }}</td>
+                    <td>{{ link.isAdded ? "yes" : 'no' }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="card-footer divset">
+            <nav aria-label="Page navigation example">
+                <div class="pagination">
+                    {{ knp_pagination_render(links, 'others/twitter_bootstrap_v4_pagination.html.twig') }}
+                </div>
+            </nav>
+        </div>
+    </div>
+{% endblock %}

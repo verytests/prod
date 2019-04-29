@@ -29,8 +29,8 @@ class HtmlTestParser
         $description= $this->domParser->find('h2[itemprop="description"]')->text();
 
         $resultTestData = [
-            'name' => html_entity_decode($header, ENT_QUOTES),
-            'desc' => html_entity_decode($description, ENT_QUOTES),
+            'name' => $this->remove_emoji(html_entity_decode($header, ENT_QUOTES)),
+            'desc' => $this->remove_emoji(html_entity_decode($header, ENT_QUOTES)),
             'testImage' => '',
             'category' => $category,
             'subCategory' => $subCategory,
@@ -40,7 +40,7 @@ class HtmlTestParser
         $questionsHtml = $this->domParser->find('.questions');
 
         for($i = 0; $i < count($questionsHtml); $i++) {
-            $question = html_entity_decode($questionsHtml[$i]->find('.frage')->find('fieldset')->find('div')->text(), ENT_QUOTES);
+            $question = $this->remove_emoji(html_entity_decode($questionsHtml[$i]->find('.frage')->find('fieldset')->find('div')->text(), ENT_QUOTES));
 
             $labelsHtml = $questionsHtml[$i]->find('.antworten')->find('label');
             $inputsHtml = $questionsHtml[$i]->find('.antworten')->find('input');
@@ -48,7 +48,7 @@ class HtmlTestParser
             $answers = [];
             for($x = 0; $x < count($labelsHtml); $x++) {
                 $answers[] = [
-                    'text' => html_entity_decode($labelsHtml[$x]->text(), ENT_QUOTES),
+                    'text' => $this->remove_emoji(html_entity_decode($labelsHtml[$x]->text(), ENT_QUOTES)),
                     'value' => $inputsHtml[$x]->getAttribute('value')
                 ];
             }
@@ -233,5 +233,10 @@ class HtmlTestParser
         $testData['results'] = $results;
 
         return $testData;
+    }
+
+    public function remove_emoji($text)
+    {
+        return preg_replace('/[[:^print:]]/', '', $text);
     }
 }
