@@ -237,6 +237,7 @@ class HtmlTestParser
 
     public function remove_emoji($text)
     {
-        return preg_replace('/[[:^print:]]/', '', $text);
+        $res = preg_replace('/[[:^print:]]/', '', $text);
+        return preg_replace("/[^a-zA-Z]/", "", $res);
     }
 }
