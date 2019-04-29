@@ -59,4 +59,28 @@ class CategoryParseController extends BaseController
 
         return $this->successResponse();
     }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     *
+     * @Route("/subcategoryparseraction", name="sub_category_parser_action", methods={"POST"})
+     */
+    public function parseSub(Request $request)
+    {
+        $url = $request->request->get('link');
+        $category = $request->request->get('category');
+        $subCategory = $request->request->get('sub_category');
+
+        /** @var CategoryParser $categoryParser */
+        $categoryParser = $this->get('app.categoryParser');
+
+        $output = $categoryParser->parseSubCategory($url, $category, $subCategory);
+
+        if(!$output) {
+            return $this->errorResponse();
+        }
+
+        return $this->successResponse();
+    }
 }

@@ -34,5 +34,25 @@
                 </div>
             </form>
         </div>
+        <div class="container divset text-center">
+            <form method="post" action="{{ path('admin_sub_category_parser_action') }}">
+                <div class="divset">
+                    <input class="form-control" type="text" name="link" placeholder="link">
+                </div>
+                <div class="divset">
+                    <input class="form-control" type="text" name="sub_category" placeholder="Sub Category">
+                </div>
+                <div class="divset">
+                    <select name="category" class="form-control">
+                        {% for category in categories %}
+                            <option value="{{ category.id }}">{{ category.category }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="divset">
+                    <input class="btn btn-outline-success" value="Submit" type="submit">
+                </div>
+            </form>
+        </div>
     </div>
 {% endblock %}

@@ -153,8 +153,61 @@ class CategoryParser
         foreach ($subCategoriesLinks as $subCatLink) {
             $paginationLinks = $this->getPaginationLinks($subCatLink['link']);
 
+            if(empty($paginationLinks)) {
+                $testUrls = $this->getTestLinks($subCatLink['link'], $subCatLink['category']);
+
+                $this->parseHeadersForKeywords($subCatLink['link'], $categoryId);
+
+                foreach ($testUrls as $testUrl) {
+                    if($this->checkTest($testUrl['link'])) {
+                        $testLinks[] = $testUrl;
+                    } else {
+                        continue;
+                    }
+                }
+            } else {
+
+                foreach ($paginationLinks as $pagLink) {
+                    $testUrls = $this->getTestLinks($pagLink, $subCatLink['category']);
+
+                    $this->parseHeadersForKeywords($pagLink, $categoryId);
+
+                    foreach ($testUrls as $testUrl) {
+                        if($this->checkTest($testUrl['link'])) {
+                            $testLinks[] = $testUrl;
+                        } else {
+                            continue;
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+        return $this->createParsedLinks($testLinks, $categoryId);
+    }
+
+    public function parseSubCategory($url, $categoryId, $subCategory)
+    {
+        $paginationLinks = $this->getPaginationLinks($url);
+        $testLinks = [];
+
+        if(empty($paginationLinks)) {
+            $testUrls = $this->getTestLinks($url, $subCategory);
+
+            $this->parseHeadersForKeywords($url, $categoryId);
+
+            foreach ($testUrls as $testUrl) {
+                if($this->checkTest($testUrl['link'])) {
+                    $testLinks[] = $testUrl;
+                } else {
+                    continue;
+                }
+            }
+        } else {
             foreach ($paginationLinks as $pagLink) {
-                $testUrls = $this->getTestLinks($pagLink, $subCatLink['category']);
+                $testUrls = $this->getTestLinks($pagLink, $subCategory);
 
                 $this->parseHeadersForKeywords($pagLink, $categoryId);
 
