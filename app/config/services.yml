@@ -40,12 +40,12 @@ services:
         autowire: true
         tags: ['doctrine.repository_service']
 
-    AppBundle\EventListeners\ExceptionListener:
-        arguments:
-            - '@AppBundle\Services\LogService'
-            - '@Symfony\Component\Routing\Generator\UrlGeneratorInterface'
-        tags:
-            - { name: kernel.event_listener, event: kernel.exception }
+    #AppBundle\EventListeners\ExceptionListener:
+        #arguments:
+            #- '@AppBundle\Services\LogService'
+            #- '@Symfony\Component\Routing\Generator\UrlGeneratorInterface'
+        #tags:
+            #- { name: kernel.event_listener, event: kernel.exception }
 
     app.user:
         class: AppBundle\Services\UserService
