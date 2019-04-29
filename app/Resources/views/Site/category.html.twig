@@ -101,11 +101,13 @@
             {% endif %}
         </div>
         {% if tests is not empty %}
+            <div class="container-fluid divset">
                 <nav aria-label="Page navigation example">
                     <div class="pagination">
                         {{ knp_pagination_render(tests, 'others/twitter_bootstrap_v4_pagination.html.twig') }}
                     </div>
                 </nav>
+            </div>
         {% endif %}
     </div>
     {% if app.user.getId is defined %}
