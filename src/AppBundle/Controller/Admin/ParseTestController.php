@@ -67,6 +67,12 @@ class ParseTestController extends BaseController
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     *
+     * @Route("/upatelinkstatus", name="update_link_status")
+     */
     public function updateLinkStatus(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
