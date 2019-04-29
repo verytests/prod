@@ -118,10 +118,17 @@ class CategoryParser
 
             if($num > $takers) {
                 $a = $articles[$i]->find('div[class="entryText"]')->find('h3')->find('a')->getAttribute('href');
-                $links[] = [
-                    'link' => 'https://www.allthetests.com'.$a,
-                    'category' => $parsedCategory
+                $link = 'https://www.allthetests.com'.$a;
+
+                $this->em->getRepository(ParsedLink::class)->findBy(['link' => $link]);
+
+                if(!$link) {
+                    $links[] = [
+                        'link' => $link,
+                        'category' => $parsedCategory
                     ];
+                }
+
             } else {
                 continue;
             }
