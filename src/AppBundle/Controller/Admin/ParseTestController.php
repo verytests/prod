@@ -109,6 +109,8 @@ class ParseTestController extends BaseController
         $category = $request->request->get('category');
         $link = $request->request->get('link');
 
+        $em = $this->getDoctrine()->getManager();
+
         if(!$link) {
             $links = $this->getDoctrine()->getManager()->getRepository(ParsedLink::class)->getLinksForCategory($category, $amount);
         } else {
@@ -125,7 +127,7 @@ class ParseTestController extends BaseController
             $url = $link->getLink();
             $subCatName = $link->getParsedCategoryName();
 
-            $sub = $this->getDoctrine()->getManager()->getRepository(SubCategory::class)->findOneBy(['category' => $subCatName]);
+            $sub = $em->getRepository(SubCategory::class)->findOneBy(['category' => $subCatName]);
 
             $subCatId = 1;
 
@@ -135,19 +137,26 @@ class ParseTestController extends BaseController
                     ->setCategoryId($category)
                     ->setCategory($subCatName);
 
-                $this->getDoctrine()->getManager()->persist($subCategory);
-                $this->getDoctrine()->getManager()->flush();
+                $em->persist($subCategory);
+                $em->flush();
                 $subCatId = $subCategory->getId();
             }
 
             $testData = $testParser->parseTest($url, $category, $subCatId);
 
+            if (!$em->isOpen()) {
+                $em = $em->create(
+                    $em->getConnection(),
+                    $em->getConfiguration()
+                );
+            }
+
             try
             {
                 $testService->addTest($testData);
                 $link->setIsAdded(true);
-                $this->getDoctrine()->getManager()->persist($link);
-                $this->getDoctrine()->getManager()->flush();
+                $em->persist($link);
+                $em->flush();
             } catch (\Exception $e)
             {
             }
