@@ -69,3 +69,6 @@ swiftmailer:
 sensio_framework_extra:
    router:
         annotations: false
+
+knp_paginator:
+    page_range: 5
