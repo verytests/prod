@@ -144,13 +144,6 @@ class ParseTestController extends BaseController
 
             $testData = $testParser->parseTest($url, $category, $subCatId);
 
-            if (!$em->isOpen()) {
-                $em = $em->create(
-                    $em->getConnection(),
-                    $em->getConfiguration()
-                );
-            }
-
             try
             {
                 $testService->addTest($testData);
