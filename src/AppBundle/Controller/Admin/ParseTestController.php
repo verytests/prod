@@ -129,7 +129,7 @@ class ParseTestController extends BaseController
 
             $sub = $em->getRepository(SubCategory::class)->findOneBy(['category' => $subCatName]);
 
-            $subCatId = 1;
+            $subCatId = $sub->getId();
 
             if(!$sub) {
                 $subCategory = new SubCategory();

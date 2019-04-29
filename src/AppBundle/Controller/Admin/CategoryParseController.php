@@ -3,6 +3,7 @@
 namespace AppBundle\Controller\Admin;
 
 use AppBundle\Controller\BaseController;
+use AppBundle\Entity\Others\ParsedLink;
 use AppBundle\Model\ServiceResponse;
 use AppBundle\Services\CategoryParser;
 use AppBundle\Services\HtmlTestParser;
@@ -25,6 +26,7 @@ class CategoryParseController extends BaseController
      */
     public function indexAction()
     {
+        $this->cleanDb();
         /** @var TestItemService $testService */
         $testService = $this->get('app.testItem');
 
@@ -82,5 +84,33 @@ class CategoryParseController extends BaseController
         }
 
         return $this->successResponse();
+    }
+
+    public function cleanDb()
+    {
+        $conn = $this->getDoctrine()->getConnection();
+        $em = $this->getDoctrine()->getManager();
+
+        $sql = "
+            SELECT link
+            FROM parsed_links
+            GROUP
+            BY link
+            HAVING COUNT(*) > 1
+        ";
+
+        $query = $conn->prepare($sql);
+        $query->execute();
+
+        $res = $query->fetchAll();
+
+        foreach ($res as $item) {
+            $links = $em->getRepository(ParsedLink::class)->findBy(['link' => $item['link']]);
+
+            for($i = 1; $i < count($links); $i++) {
+                $em->remove($links[$i]);
+                $em->flush();
+            }
+        }
     }
 }
