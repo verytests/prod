@@ -67,6 +67,20 @@ class ParseTestController extends BaseController
         ]);
     }
 
+    public function updateLinkStatus(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $link = $em->getRepository(ParsedLink::class)->findBy(['id' => $request->request->get('link_id')]);
+
+        $link->setIsAdded($request->request->get('value'));
+
+        $em->persist($link);
+        $em->flush();
+
+        return $this->successResponse();
+    }
+
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\JsonResponse

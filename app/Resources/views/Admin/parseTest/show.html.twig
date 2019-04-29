@@ -31,6 +31,7 @@
             <tr>
                 <th scope="col">Link</th>
                 <th scope="col">Is added</th>
+                <th scope="col">Set status</th>
             </tr>
             </thead>
             <tbody>
@@ -38,6 +39,18 @@
                 <tr>
                     <td>{{ link.link }}</td>
                     <td>{{ link.isAdded ? "yes" : 'no' }}</td>
+                    <td>
+                        {% if link.isAdded %}
+                            <a class="btn btn-outline-warning" href="{{ path('admin_update_link_status', {'link_id': link.id, 'value': '0'}) }}">
+                                Set false
+                            </a>
+                        {% else %}
+                            <a class="btn btn-outline-success" href="{{ path('admin_update_link_status', {'link_id': link.id, 'value': '1'}) }}">
+                                Set true
+                            </a>
+                        {% endif %}
+
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>
