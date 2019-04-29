@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SitemapController extends BaseController
 {
     /**
-     * @Route("/sitemap/sitemap.xml", name="sitemap")
+     * @Route("/sitemap.xml", name="sitemap")
      */
     public function showAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
@@ -37,8 +37,6 @@ class SitemapController extends BaseController
         $urls[] = ['loc' => $this->generateUrl('categories_books')];
         $urls[] = ['loc' => $this->generateUrl('categories_career')];
         $urls[] = ['loc' => $this->generateUrl('categories_eq')];
-        $urls[] = ['loc' => $this->generateUrl('categories_fan')];
-        $urls[] = ['loc' => $this->generateUrl('categories_fan_fiction')];
         $urls[] = ['loc' => $this->generateUrl('categories_game')];
         $urls[] = ['loc' => $this->generateUrl('categories_health')];
         $urls[] = ['loc' => $this->generateUrl('categories_knowledge')];
