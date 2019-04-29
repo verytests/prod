@@ -31,7 +31,7 @@
             <div class="divset">
                 <select name="category" class="form-control">
                     {% for category in categories %}
-                        <option value="{{ category.id }}">{{ category.category }}</option>
+                        <option value="{{ category.id }}">{{ category.id }} : {{ category.category }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -42,6 +42,28 @@
                 <input class="btn btn-outline-success" value="Submit" type="submit">
             </div>
         </form>
+    </div>
+
+    <div class="container-fluid">
+        <div class="display-4">
+            Available tests amount
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Category Id</th>
+                <th scope="col">Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for cat in available %}
+                <tr>
+                    <td>{{ cat.category_id }}</td>
+                    <td>{{ cat.amount }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
 {% endblock %}

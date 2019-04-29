@@ -3,14 +3,20 @@
 {% block layout %}
     <link rel="stylesheet" type="text/css" href="{{ asset('public/includes/css/privateLayout.css') }}">
 
+    <div class="container-fluid">
+        <div class="row" id="responsiveNavHolder">
+
+        </div>
+    </div>
+
     <div class="container-fluid" id="layout">
         <div class="row" id="layoutRow">
-            <div class="" id="privateNav">
+            <div class="col-3" id="privateNav">
                 {% block navbar %}
 
                 {% endblock %}
             </div>
-            <div class="" id="privateBody">
+            <div class="col-9" id="privateBody">
                 <div class="card bg-light">
                     <div class="card-body">
                         {% block body %}
@@ -21,5 +27,20 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            if($(window).width() > 950) {
+                $('#navCat').hide();
+            }
+
+            if($(window).width() < 950) {
+                let cloned = $('#privateNav').clone();
+                $('#privateNav').remove();
+                $('#responsiveNavHolder').append(cloned);
+                $('#privateNav').removeClass('col-3').addClass('col-12');
+                $('#privateBody').removeClass('col-9').addClass('col-12').css('margin-top', '1em');
+            }
+        });
+    </script>
 
 {% endblock %}

@@ -413,8 +413,8 @@ class TestItemService
         $keywords = [];
 
         if(!empty($query)) {
-            $amount = 9;
-            if(count($query) < 9) {
+            $amount = 3;
+            if(count($query) < 3) {
                 $amount = count($query);
             }
 

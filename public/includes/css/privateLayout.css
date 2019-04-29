@@ -36,36 +36,10 @@ body {
     }
 }
 
-#layout{
+#privateBody {
     margin-top: 1em;
-    margin-left: 1em;
 }
 
-#privateBody{
-    margin-bottom: 1em;
-    margin-left: 3%;
-}
-
-#layoutRow {
-    display: grid;
-    grid-template-columns: 20% 77%;
-}
-
-@media (max-width: 1000px) {
-    #layoutRow {
-        display: grid;
-        grid-template-columns: 94%;
-    }
-
-    #privateBody{
-        margin-bottom: 1em;
-        margin-left: 0;
-        margin-right: 2%;
-    }
-
-    #privateNav{
-        margin-bottom: 1em;
-        margin-left: 0;
-        margin-right: 2%;
-    }
+#privateNav {
+    margin-top: 1em;
 }

@@ -2,52 +2,55 @@
 
 {% block metaTitle %}
     {% if categoryMeta is defined %}
-{{ categoryMeta.title }}
+        {{ categoryMeta.title }}
     {% endif %}
 {% endblock %}
 
 {% block metaDesc %}
     {% if categoryMeta is defined %}
-{{ categoryMeta.description }}
+        {{ categoryMeta.description }}
     {% endif %}
 {% endblock %}
 
 {% block metaKeywords %}
-{{ keywords|join(', ') }}
+    {{ keywords|join(', ') }}
 {% endblock %}
 
 {% block body %}
     <link rel="stylesheet" type="text/css" href="{{ asset('public/includes/css/main/userStatistic.css') }}">
     {% if tests is not empty %}
-    <div class="container-fluid">
-        <div class="card-header">
-            <div class="display-4 text-center">
-                Search
-            </div>
-            <div class="divset">
-                <form method="GET" action="{% block searchForm %}{% endblock %}">
-                    <div class="form-row justify-content-center">
-                        <div class="col-3">
-                            <input name="q" class="form-control searchTagInp" placeholder="Search">
-                        </div>
-                        <div class="col-1">
-                            <input type="submit" class="btn btn-outline-primary" value="Search">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="row justify-content-center">
-                {% block searchNav %}{% endblock %}
-            </div>
-            <div class="row justify-content-center">
-                <div class="divset">
-                    <a class="btn btn-primary" data-toggle="collapse" href="#subCategories" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        Watch sub categories
-                    </a>
+        <div class="container-fluid">
+            <div class="card-header">
+                <div class="display-4 text-center">
+                    Search
                 </div>
-            </div>
-                <div class="collapse divset" id="subCategories">
-                    <div class="card card-body">
+                <div class="divset container-fluid">
+                    <div class="row justify-content-center">
+                        <form class="form-inline my-2 my-lg-0" method="GET" action="{% block searchForm %}{% endblock %}">
+                            <input name="q" class="form-control mr-sm-2 searchTagInp" placeholder="Search">
+                            <input type="submit" class="btn btn-outline-danger my-2 my-sm-0" value="Search">
+                        </form>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <h3>Random keywords</h3>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    {% block searchNav %}{% endblock %}
+                </div>
+                <div class="dropdown-divider divset"></div>
+                <div class="row justify-content-center">
+                    <div class="">
+                        <a class="btn btn-outline-primary" data-toggle="collapse" href="#subCategories" role="button"
+                           aria-expanded="false" aria-controls="collapseExample">
+                            Watch sub categories
+                        </a>
+                    </div>
+                </div>
+                <div class="collapse" id="subCategories">
+                    <div class="container-fluid">
                         <div class="row">
                             {% block subCategories %}
 
@@ -55,8 +58,8 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
     {% endif %}
     <div class="container-fluid" style="margin-left: 2%">
         <div class="row">
@@ -72,10 +75,11 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">{{ test.name }}</h5>
                         <p class="card-text">{{ test.shortDescription }}</p>
-                        <a href="{{ path('test_pass', { 'name': test.urlName}) }}" class="btn btn-outline-primary">Pass the
+                        <a href="{{ path('test_pass', { 'name': test.urlName}) }}" class="btn btn-outline-primary">Pass
+                            the
                             test!</a>
                         <div class="divset">
-                            <button class="btn btn-sm btn-outline-info saveBtn" data-id="{{ test.id }}"> Save </button>
+                            <button class="btn btn-sm btn-outline-info saveBtn" data-id="{{ test.id }}"> Save</button>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -97,13 +101,13 @@
             {% endif %}
         </div>
         {% if tests is not empty %}
-        <div class="card-footer divset">
-            <nav aria-label="Page navigation example">
-                <div class="pagination">
-                    {{ knp_pagination_render(tests, 'others/twitter_bootstrap_v4_pagination.html.twig') }}
-                </div>
-            </nav>
-        </div>
+            <div class="card-footer divset">
+                <nav aria-label="Page navigation example">
+                    <div class="pagination">
+                        {{ knp_pagination_render(tests, 'others/twitter_bootstrap_v4_pagination.html.twig') }}
+                    </div>
+                </nav>
+            </div>
         {% endif %}
     </div>
     {% if app.user.getId is defined %}
