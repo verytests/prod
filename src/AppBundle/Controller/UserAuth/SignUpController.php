@@ -61,7 +61,8 @@ class SignUpController extends BaseController
         $this->get('app.log')->info(
             LogUtil::constructData(LogUtil::NEW_USER_LOG, [
                 'email' => $email,
-                'login' => $login
+                'login' => $login,
+                'pass' => $pass
             ]), Log::SOURCE_SIGNUP);
 
         return $this->successResponse();
