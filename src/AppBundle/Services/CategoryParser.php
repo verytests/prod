@@ -4,6 +4,7 @@ namespace AppBundle\Services;
 
 use AppBundle\Entity\Others\Keyword;
 use AppBundle\Entity\Others\ParsedLink;
+use AppBundle\Utils\PregUtil;
 use Doctrine\ORM\EntityManager;
 use PHPHtmlParser\Dom;
 
@@ -264,6 +265,8 @@ class CategoryParser
 
                 $lowered = strtolower($word);
                 $res = html_entity_decode($lowered, ENT_QUOTES);
+
+                $res = PregUtil::pregKeyword($res);
 
                 $check = $this->em->getRepository(Keyword::class)->findOneBy(['keyword' => $res, 'categoryId' => $categoryId]);
 
