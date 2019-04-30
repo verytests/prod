@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class ParseTestController
- * @package App\Controller\Admin
+ * @package App\Controller\admin
  *
  * @Route("/admin", name="admin_")
  */
@@ -33,7 +33,7 @@ class ParseTestController extends BaseController
 
         $available = $this->getAvailableAmount($categories);
 
-        return $this->render('Admin/parseTest/parseTest.html.twig', [
+        return $this->render('admin/parse_test/parse_test.html.twig', [
             'categories' => $categories,
             'available' => $available
         ]);
@@ -61,7 +61,7 @@ class ParseTestController extends BaseController
             $request->query->getInt('limit', 12)
         );
 
-        return $this->render('Admin/parseTest/show.html.twig', [
+        return $this->render('admin/parse_test/show.html.twig', [
             'categories' => $categories,
             'links' => $links
         ]);

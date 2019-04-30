@@ -1,0 +1,85 @@
+{% extends 'public_navbar.html.twig' %}
+
+{% block body %}
+    <div class="jumbotron jumbotron-fluid text-center ">
+        <div class="container">
+            <h1 class="display-4">TOP-3 of Today</h1>
+        </div>
+    </div>
+    <div class="container-fluid divset">
+        <div class="row justify-content-center">
+            {% if topStatistic.day is not empty %}
+
+                {% for testDay in topStatistic.day %}
+
+                    {% embed 'site/test_item/test_item_block.html.twig' with {'test': testDay} %}
+
+                    {% endembed %}
+
+                {% endfor %}
+            {% else %}
+
+                {% embed 'site/no_tests.html.twig' %}
+
+                {% endembed %}
+
+            {% endif %}
+        </div>
+    </div>
+    <div class="jumbotron jumbotron-fluid  text-center jumb">
+        <div class="container">
+            <h1 class="display-4">TOP-3 of Week</h1>
+        </div>
+    </div>
+    <div class="container-fluid divset">
+        <div class="row justify-content-center">
+            {% if topStatistic.week is not empty %}
+                {% for testWeek in topStatistic.week %}
+
+                    {% embed 'site/test_item/test_item_block.html.twig' with {'test': testWeek} %}
+
+                    {% endembed %}
+
+                {% endfor %}
+            {% else %}
+
+                {% embed 'site/no_tests.html.twig' %}
+
+                {% endembed %}
+
+            {% endif %}
+        </div>
+    </div>
+    <div class="jumbotron jumbotron-fluid  text-center jumb">
+        <div class="container">
+            <h1 class="display-4">TOP-3 of Month</h1>
+        </div>
+    </div>
+    <div class="container-fluid divset">
+        <div class="row justify-content-center">
+            {% if topStatistic.month is not empty %}
+                {% for testMonth in topStatistic.month %}
+
+                    {% embed 'site/test_item/test_item_block.html.twig' with {'test': testMonth} %}
+
+                    {% endembed %}
+
+                {% endfor %}
+            {% else %}
+
+                {% embed 'site/no_tests.html.twig' %}
+
+                {% endembed %}
+
+            {% endif %}
+        </div>
+    </div>
+
+    {% if app.user.getId is defined %}
+        <script rel="script" src="{{ asset('public/includes/js/saveTest/saveTest.js') }}"></script>
+        <script rel="script" src="{{ asset('public/includes/js/saveTest/getSavedTests.js') }}"></script>
+    {% else %}
+        <script rel="script" src="{{ asset('public/includes/js/saveTest/saveTestNonAuth.js') }}"></script>
+    {% endif %}
+
+{% endblock %}

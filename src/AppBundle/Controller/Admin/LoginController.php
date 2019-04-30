@@ -10,10 +10,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 /**
- * Admin login controller
+ * admin login controller
  *
  * Class LoginController
- * @package App\Controller\Admin
+ * @package App\Controller\admin
  *
  */
 
@@ -32,6 +32,6 @@ class LoginController extends BaseController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('UserAuth/adminLoginPage.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        return $this->render('user_auth/admin_login_page.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 }

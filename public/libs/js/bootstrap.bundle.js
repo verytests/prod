@@ -75,7 +75,7 @@
    */
   /**
    * ------------------------------------------------------------------------
-   * Private TransitionEnd Helpers
+   * private TransitionEnd Helpers
    * ------------------------------------------------------------------------
    */
 
@@ -280,7 +280,7 @@
     _proto.dispose = function dispose() {
       $.removeData(this._element, DATA_KEY);
       this._element = null;
-    }; // Private
+    }; // private
 
 
     _proto._getRootElement = function _getRootElement(element) {
@@ -739,7 +739,7 @@
       this._isSliding = null;
       this._activeElement = null;
       this._indicatorsElement = null;
-    }; // Private
+    }; // private
 
 
     _proto._getConfig = function _getConfig(config) {
@@ -1364,7 +1364,7 @@
       this._element = null;
       this._triggerArray = null;
       this._isTransitioning = null;
-    }; // Private
+    }; // private
 
 
     _proto._getConfig = function _getConfig(config) {
@@ -4301,7 +4301,7 @@
       if (this._popper !== null) {
         this._popper.scheduleUpdate();
       }
-    }; // Private
+    }; // private
 
 
     _proto._addEventListeners = function _addEventListeners() {
@@ -4787,7 +4787,7 @@
 
     _proto.handleUpdate = function handleUpdate() {
       this._adjustDialog();
-    }; // Private
+    }; // private
 
 
     _proto._getConfig = function _getConfig(config) {
@@ -5552,7 +5552,7 @@
       }
 
       return title;
-    }; // Private
+    }; // private
 
 
     _proto._getContainer = function _getContainer() {
@@ -5929,7 +5929,7 @@
 
       this.setElementContent($tip.find(Selector$7.CONTENT), content);
       $tip.removeClass(ClassName$7.FADE + " " + ClassName$7.SHOW);
-    }; // Private
+    }; // private
 
 
     _proto._getContent = function _getContent() {
@@ -6156,7 +6156,7 @@
       this._targets = null;
       this._activeTarget = null;
       this._scrollHeight = null;
-    }; // Private
+    }; // private
 
 
     _proto._getConfig = function _getConfig(config) {
@@ -6448,7 +6448,7 @@
     _proto.dispose = function dispose() {
       $.removeData(this._element, DATA_KEY$9);
       this._element = null;
-    }; // Private
+    }; // private
 
 
     _proto._activate = function _activate(element, container, callback) {
@@ -6687,7 +6687,7 @@
       $.removeData(this._element, DATA_KEY$a);
       this._element = null;
       this._config = null;
-    }; // Private
+    }; // private
 
 
     _proto._getConfig = function _getConfig(config) {

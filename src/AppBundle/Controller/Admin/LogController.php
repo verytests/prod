@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class LogController
- * @package App\Controller\Admin
+ * @package App\Controller\admin
  *
  * @Route("/admin", name="admin_")
  */
@@ -49,7 +49,7 @@ class LogController extends BaseController
         $sources = $log->getSources();
         $sections = $log->getSections();
 
-        return $this->render('Admin/logs/logs.html.twig', [
+        return $this->render('admin/logs/logs.html.twig', [
             'levels' => $levels,
             'sources' => $sources,
             'sections' => $sections,

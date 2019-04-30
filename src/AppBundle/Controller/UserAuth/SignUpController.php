@@ -24,7 +24,7 @@ class SignUpController extends BaseController
      */
     public function signUpRender()
     {
-        return $this->render('UserAuth/SignUpPage.html.twig');
+        return $this->render('user_auth/signup_page.html.twig');
     }
 
     /**

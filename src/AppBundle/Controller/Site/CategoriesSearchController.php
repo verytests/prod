@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class CategoriesController
- * @package App\Controller\Site\Categories
+ * @package App\Controller\site\Categories
  *
  * @Route("/", name="categories_")
  */
@@ -46,7 +46,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/all.html.twig', [
+        return $this->render('site/categories/all.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0]
@@ -83,7 +83,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/popular.html.twig', [
+        return $this->render('site/categories/popular.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0]
@@ -120,7 +120,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/books.html.twig', [
+        return $this->render('site/categories/books.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -160,7 +160,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/career.html.twig', [
+        return $this->render('site/categories/career.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -200,7 +200,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/eq.html.twig', [
+        return $this->render('site/categories/eq.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -240,7 +240,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/forkids.html.twig', [
+        return $this->render('site/categories/forkids.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -280,7 +280,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/game.html.twig', [
+        return $this->render('site/categories/game.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -320,7 +320,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/health.html.twig', [
+        return $this->render('site/categories/health.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -360,7 +360,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/iq.html.twig', [
+        return $this->render('site/categories/iq.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -400,7 +400,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/knowledge.html.twig', [
+        return $this->render('site/categories/knowledge.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -440,7 +440,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/language.html.twig', [
+        return $this->render('site/categories/language.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -480,7 +480,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/movie.html.twig', [
+        return $this->render('site/categories/movie.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -520,7 +520,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/music.html.twig', [
+        return $this->render('site/categories/music.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -560,7 +560,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/personality.html.twig', [
+        return $this->render('site/categories/personality.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -600,7 +600,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/psychology.html.twig', [
+        return $this->render('site/categories/psychology.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -640,7 +640,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/purity.html.twig', [
+        return $this->render('site/categories/purity.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -680,7 +680,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/sport.html.twig', [
+        return $this->render('site/categories/sport.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -720,7 +720,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/think.html.twig', [
+        return $this->render('site/categories/think.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -760,7 +760,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/tv.html.twig', [
+        return $this->render('site/categories/tv.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -800,7 +800,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/youtube.html.twig', [
+        return $this->render('site/categories/youtube.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -840,7 +840,7 @@ class CategoriesSearchController extends BaseController
         );
 
 
-        return $this->render('Site/categories/funny.html.twig', [
+        return $this->render('site/categories/funny.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -879,7 +879,7 @@ class CategoriesSearchController extends BaseController
             $request->query->getInt('limit', 12)
         );
 
-        return $this->render('Site/categories/actor.html.twig', [
+        return $this->render('site/categories/actor.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -918,7 +918,7 @@ class CategoriesSearchController extends BaseController
             $request->query->getInt('limit', 12)
         );
 
-        return $this->render('Site/categories/love.html.twig', [
+        return $this->render('site/categories/love.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -957,7 +957,7 @@ class CategoriesSearchController extends BaseController
             $request->query->getInt('limit', 12)
         );
 
-        return $this->render('Site/categories/onlyformen.html.twig', [
+        return $this->render('site/categories/onlyformen.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],
@@ -996,7 +996,7 @@ class CategoriesSearchController extends BaseController
             $request->query->getInt('limit', 12)
         );
 
-        return $this->render('Site/categories/onlyforwomen.html.twig', [
+        return $this->render('site/categories/onlyforwomen.html.twig', [
             'tests' => $tests,
             'keywords' => $keywords,
             'categoryMeta' => $categoryMeta[0],

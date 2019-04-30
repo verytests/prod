@@ -1,0 +1,23 @@
+{% extends 'site/category.html.twig' %}
+
+{% block navEq %}active{% endblock %}
+
+{% block title %} EQ tests on verytests.com {% endblock %}
+
+{% block searchForm %}{{ path('categories_eq_search') }}{% endblock %}
+
+{% block searchNav %}
+    {% if keywords is defined %}
+        {% for keyword in keywords|slice(0,3) %}
+            <a href="{{ path('categories_eq_search', {'q': keyword}) }}" class="btn btn-outline-success searchTag fatFont">{{ keyword|capitalize }}</a>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block subCategories %}
+    {% if subCategories is defined %}
+        {% for sub in subCategories %}
+            <a href="{{ path('categories_eq_sub', {'id': sub.id}) }}" class="btn btn-outline-primary subCategory">{{ sub.category }}</a>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'public_navbar.html.twig' %}
+
+{% block body %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/includes/css/private/private.css') }}">
+
+    <div class="container-fluid text-center">
+        <div class="jumbotron">
+            <div class="display-5">To enter the private you have to sign in!</div>
+            <form method="post" style="margin-top: 50px">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <div class="form-group">
+                    <label for="inputLogin"><h1>Login</h1></label>
+                    <input type="text" value="{{ last_username }}" name="login" id="inputLogin" class="form-control" placeholder="Login" required autofocus>
+                    <small id="emailHelp" class="form-text text-muted"><h6>*Your login.</h6></small>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword"><h1>Password</h1></label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                </div>
+
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+
+                <div class="custom-control custom-checkbox divset">
+                    <input type="checkbox" class="custom-control-input" id="remember" name="_remember_me">
+                    <label class="custom-control-label" for="remember"><h3>Keep me logged in</h3></label>
+                </div>
+
+                <button class="btn btn-primary" type="submit">
+                    Sign In
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

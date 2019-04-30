@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class StartPageController
- * @package App\Controller\Site
+ * @package App\Controller\site
  *
  * Start page controller.
  *
@@ -29,7 +29,7 @@ class StartPageController extends BaseController
 
         $topStatistic = $userStatistic->getMonthStatistic();
 
-        return $this->render('Site/startPage/startPage.html.twig', [
+        return $this->render('site/start_page/index.html.twig', [
             'topStatistic' => $topStatistic
         ]);
     }

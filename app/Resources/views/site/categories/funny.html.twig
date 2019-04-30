@@ -1,0 +1,23 @@
+{% extends 'site/category.html.twig' %}
+
+{% block navFunny %}active{% endblock %}
+
+{% block searchForm %}{{ path('categories_funny_search') }}{% endblock %}
+{% block searchNav %}
+    {% if keywords is defined %}
+    {% for keyword in keywords|slice(0,3) %}
+    <a href="{{ path('categories_funny_search', {'q': keyword}) }}" class="btn btn-outline-success searchTag fatFont">{{ keyword|capitalize }}</a>
+    {% endfor %}
+    {% endif %}
+{% endblock %}
+
+
+{% block title %} Funny tests on verytests.com {% endblock %}
+
+{% block subCategories %}
+    {% if subCategories is defined %}
+        {% for sub in subCategories %}
+            <a href="{{ path('categories_funny_sub', {'id': sub.id}) }}" class="btn btn-outline-primary subCategory">{{ sub.category }}</a>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

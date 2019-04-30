@@ -1,0 +1,39 @@
+{% extends 'private_layout.html.twig' %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button id="navTogglerBtn" class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navCat" class="display-4 text-muted">
+            Categories
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto flex-column">
+                <li class="nav-item {% block navSavedTests %}{% endblock %}">
+                    <div class="display-5">
+                        <a class="nav-link" href="{{ path('private_saved_tests') }}">Saved tests</a>
+                    </div>
+                </li>
+                <li class="nav-item {% block navRecentTests %}{% endblock %}">
+                    <div class="display-5">
+                        <a class="nav-link" href="{{ path('private_recent_tests') }}">Your recent tests</a>
+                    </div>
+                </li>
+                <li class="dropdown-divider"></li>
+                <li class="nav-item">
+                    <div class="display-5">
+                        <a class="nav-link" href="/">Back to the site</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="display-5">
+                        <a class="nav-link" href="{{ path('user_logout') }}">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+{% endblock %}

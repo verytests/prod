@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class ParseTestController
- * @package App\Controller\Admin
+ * @package App\Controller\admin
  *
  * @Route("/admin", name="admin_")
  */
@@ -32,7 +32,7 @@ class CategoryParseController extends BaseController
 
         $categories = $testService->getCategories();
 
-        return $this->render('Admin/parseCategory/parseCategory.html.twig', [
+        return $this->render('admin/parse_category/parse_category.html.twig', [
             'categories' => $categories
         ]);
     }

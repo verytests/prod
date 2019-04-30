@@ -38,7 +38,7 @@ class RecentTestsController extends BaseController
             $request->query->getInt('limit', 12)
         );
 
-        return $this->render('Private/recentTests/recentTests.html.twig', [
+        return $this->render('private/recent_tests/recent_tests.html.twig', [
             'tests' => $tests
         ]);
     }

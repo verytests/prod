@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class StartPageController
- * @package App\Controller\Admin
+ * @package App\Controller\admin
  *
  * Start page controller.
  *
@@ -23,6 +23,6 @@ class StartPageController extends BaseController
      */
     public function startPage()
     {
-        return $this->render('Admin/startPage/startPage.html.twig');
+        return $this->render('admin/start_page/start_page.html.twig');
     }
 }

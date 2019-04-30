@@ -1,0 +1,32 @@
+{% extends 'private/private_navbar.html.twig' %}
+
+{% block body %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/includes/css/main/userStatistic.css') }}">
+
+    <div class="container-fluid" style="margin-left: 2%">
+        <div class="row">
+            {% for test in tests %}
+
+                {% embed 'site/test_item/test_item_block.html.twig' %}
+
+                {% endembed %}
+
+            {% endfor %}
+
+            {% if tests is empty %}
+
+                {% embed 'site/no_tests.html.twig' %}
+
+                {% endembed %}
+
+            {% endif %}
+        </div>
+        {% if tests is not empty %}
+
+            {% embed 'site/pagination.html.twig' with {'content': tests} %}
+
+            {% endembed %}
+
+        {% endif %}
+    </div>
+{% endblock %}

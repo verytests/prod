@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * Class StartPageController
- * @package App\Controller\Admin
+ * @package App\Controller\admin
  *
  * Start page controller.
  *
@@ -25,6 +25,6 @@ class StartPageController extends BaseController
      */
     public function startPage()
     {
-        return $this->render('Private/startPage/startPage.html.twig');
+        return $this->render('private/start_page/start_page.html.twig');
     }
 }

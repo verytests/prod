@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class CategoriesController
- * @package App\Controller\Site\Categories
+ * @package App\Controller\site\Categories
  *
  * @Route("/", name="site_")
  */
@@ -41,7 +41,7 @@ class SearchController extends BaseController
             $request->query->getInt('limit', 12)
         );
 
-        return $this->render('Site/search/search.html.twig', [
+        return $this->render('site/search/search.html.twig', [
             'tests' => $tests,
             'search_query' => $query,
             'keywords' => $keywords

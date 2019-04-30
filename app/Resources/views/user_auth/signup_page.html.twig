@@ -1,0 +1,42 @@
+{% extends 'public_navbar.html.twig' %}
+
+{% block body %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/includes/css/signUp/signUp.css') }}">
+    <div class="container-fluid text-center">
+
+        <div class="jumbotron">
+            <div class="display-4">The sign up process</div>
+            <form id="signup" style="margin-top: 50px">
+                <div id="error" class="alert alert-danger" style="display: none">
+
+                </div>
+                <div class="form-group">
+                    <label for="login"><h1>Login</h1></label>
+                    <input name="login" type="text" class="form-control" id="login" placeholder="Login">
+                    <div id="loginfeedback" class="invalid-feedback formValid"></div>
+                </div>
+                <div class="form-group">
+                    <label for="email"><h1>Email</h1></label>
+                    <input name="email" type="text" class="form-control" id="email" placeholder="Email">
+                    <div id="emailfeedback" class="invalid-feedback formValid"></div>
+                </div>
+                <div class="form-row justify-content-around">
+                    <div class="form-group col-md-6">
+                        <label for="password"><h1>Password</h1></label>
+                        <input name="pass" type="password" class="form-control" id="password" placeholder="Password">
+                        <div id="passfeedback" class="invalid-feedback formValid"></div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="password1"><h1>Password again</h1></label>
+                        <input name="pass1" type="password" class="form-control" id="password1" placeholder="Password again">
+                        <div id="pass1feedback" class="invalid-feedback formValid"></div>
+                    </div>
+                </div>
+                <button id="submit" type="submit" class="btn btn-primary btnset">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script rel="script" src="{{ asset('public/includes/js/main/formsValidation.js') }}"></script>
+    <script rel="script" src="{{ asset('public/includes/js/signUp/signUp.js') }}"></script>
+{% endblock %}

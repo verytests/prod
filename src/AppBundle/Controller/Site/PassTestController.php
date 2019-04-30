@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class PassTestController
- * @package App\Controller\Site
+ * @package App\Controller\site
  *
  * @Route("/test", name="test_")
  */
@@ -32,7 +32,7 @@ class PassTestController extends BaseController
 
         $test = $testService->getTestById($id);
 
-        return $this->render('Site/test/defaultMainImgSrc.html.twig', [
+        return $this->render('site/test/pass_test.html.twig', [
             'test' => $test
         ]);
     }
@@ -81,7 +81,7 @@ class PassTestController extends BaseController
 
         $test = $testService->getTestById($id);
 
-        return $this->render('Site/test/resultTest.html.twig', [
+        return $this->render('site/test/result_test.html.twig', [
             'result' => $result,
             'test' => $test
         ]);

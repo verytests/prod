@@ -1,0 +1,36 @@
+{% extends 'public_navbar.html.twig' %}
+
+{% block body %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/includes/css/private/private.css') }}">
+
+    <div class="container-fluid text-center">
+        <div class="jumbotron">
+            <div class="display-4">To enter the admin sign in!</div>
+
+            <form method="post" style="margin-top: 50px">
+
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <div class="form-group">
+                    <label for="inputLogin"><h1>Login</h1></label>
+                    <input type="text" value="{{ last_username }}" name="login" id="inputLogin" class="form-control" placeholder="Login" required autofocus>
+                    <div id="loginfeedback" class="invalid-feedback"></div>
+                    <small id="emailHelp" class="form-text text-muted"><h3>*Secret admin login.</h3></small>
+                </div>
+                <div class="form-group" style="margin-top: 50px">
+                    <label for="inputPassword"><h1>Password</h1></label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <div id="passfeedback" class="invalid-feedback"></div>
+                </div>
+
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+                <button class="btn btn-primary" type="submit">
+                    Sign In
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

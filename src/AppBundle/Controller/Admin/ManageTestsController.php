@@ -43,7 +43,7 @@ class ManageTestsController extends BaseController
             $request->query->getInt('limit', 10)
         );
 
-        return $this->render('Admin/manageTests/manageTests.html.twig', [
+        return $this->render('admin/manage_tests/manage_tests.html.twig', [
             'categories' => $categories,
             'tests' => $tests
         ]);
@@ -64,7 +64,7 @@ class ManageTestsController extends BaseController
 
         $test = $testService->getTestById($testId);
 
-        return $this->render('Admin/manageTests/testDetail.html.twig', [
+        return $this->render('admin/manage_tests/test_detail.html.twig', [
             'test' => $test
         ]);
     }
@@ -151,7 +151,7 @@ class ManageTestsController extends BaseController
 
         $test = $testService->getTestById($testId);
 
-        return $this->render('Site/test/defaultMainImgSrc.html.twig', [
+        return $this->render('site/test/defaultMainImgSrc.html.twig', [
             'test' => $test
         ]);
     }

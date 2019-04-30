@@ -1,0 +1,114 @@
+{% extends 'public_navbar.html.twig' %}
+
+{% block metaTitle %}
+    {% if categoryMeta is defined %}
+        {{ categoryMeta.title }}
+    {% endif %}
+{% endblock %}
+
+{% block metaDesc %}
+    {% if categoryMeta is defined %}
+        {{ categoryMeta.description }}
+    {% endif %}
+{% endblock %}
+
+{% block metaKeywords %}
+    {{ keywords|join(', ') }}
+{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/includes/css/main/userStatistic.css') }}">
+    {% if tests is not empty %}
+
+        {% block category_search %}
+
+        {% endblock %}
+
+        <div class="container-fluid">
+            <div class="card-header">
+                <div class="display-4 text-center">
+                    Search
+                </div>
+                <div class="divset container-fluid">
+                    <div class="row justify-content-center">
+                        <form class="form-inline my-2 my-lg-0" method="GET" action="{% block searchForm %}{% endblock %}">
+                            <input name="q" class="form-control mr-sm-2 searchTagInp" placeholder="Search">
+                            <input type="submit" class="btn btn-outline-danger my-2 my-sm-0" value="Search">
+                        </form>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <h3>Random keywords</h3>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    {% block searchNav %}{% endblock %}
+                </div>
+                <div class="dropdown-divider divset"></div>
+
+                {% set check = app.request.attributes.get('_route') %}
+
+                <div class="row justify-content-center" id="sub_categories">
+                    <div class="">
+                        <a class="btn btn-outline-primary" data-toggle="collapse" href="#subCategories" role="button"
+                           aria-expanded="false" aria-controls="collapseExample">
+                            Watch sub categories
+                        </a>
+                    </div>
+                </div>
+                <div class="collapse" id="subCategories">
+                    <div class="container-fluid">
+                        <div class="row">
+                            {% block subCategories %}
+
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+                {% if check == 'categories_all' or check == 'categories_popular' %}
+                    <script>
+                        $('#sub_categories').hide();
+                    </script>
+                {% endif %}
+            </div>
+        </div>
+
+    {% endif %}
+    <div class="container-fluid" style="margin-left: 2%">
+        <div class="row">
+            {% for test in tests %}
+
+                {% embed 'site/test_item/test_item_block.html.twig' %}
+
+                {% endembed %}
+
+            {% endfor %}
+
+            {% if tests is empty %}
+
+                {% embed 'site/no_tests.html.twig' %}
+
+                {% endembed %}
+
+            {% endif %}
+        </div>
+
+        {% if tests is not empty %}
+
+            {% embed 'site/pagination.html.twig' with {'content' : tests} %}
+
+            {% endembed %}
+
+        {% endif %}
+
+    </div>
+
+    {% if app.user.getId is defined %}
+        <script rel="script" src="{{ asset('public/includes/js/saveTest/saveTest.js') }}"></script>
+        <script rel="script" src="{{ asset('public/includes/js/saveTest/getSavedTests.js') }}"></script>
+    {% else %}
+        <script rel="script" src="{{ asset('public/includes/js/saveTest/saveTestNonAuth.js') }}"></script>
+    {% endif %}
+
+{% endblock %}

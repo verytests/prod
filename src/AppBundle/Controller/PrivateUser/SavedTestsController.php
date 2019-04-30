@@ -38,7 +38,7 @@ class SavedTestsController extends BaseController
             $request->query->getInt('limit', 12)
         );
 
-        return $this->render('Private/savedTests/savedTests.html.twig', [
+        return $this->render('private/saved_tests/saved_tests.html.twig', [
             'tests' => $tests
         ]);
     }

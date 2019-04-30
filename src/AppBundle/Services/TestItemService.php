@@ -413,17 +413,15 @@ class TestItemService
         $keywords = [];
 
         if(!empty($query)) {
-            $amount = 3;
-            if(count($query) < 3) {
-                $amount = count($query);
+            for ($i = 0; $i < count($query); $i++) {
+                $keywords[] = $query[$i]['keyword'];
             }
+        }
 
-            $rand = array_rand($query, $amount);
+        shuffle($keywords);
 
-
-            for ($i = 0; $i < count($rand); $i++) {
-                $keywords[] = $query[$rand[$i]]['keyword'];
-            }
+        if(count($keywords) > 100) {
+            array_slice($keywords, 0, 100);
         }
 
         return $keywords;

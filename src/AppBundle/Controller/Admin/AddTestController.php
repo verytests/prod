@@ -29,7 +29,7 @@ class AddTestController extends BaseController
 
         $categories = $testItemService->getCategories();
 
-        return $this->render('Admin/addTest/addTest.html.twig', [
+        return $this->render('admin/add_test/add_test.html.twig', [
             'categories' => $categories
         ]);
     }
