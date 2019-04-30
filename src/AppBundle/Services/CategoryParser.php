@@ -79,7 +79,7 @@ class CategoryParser
         $pagination = $this->domParser->find('div[id="paging"]');
 
         if(empty($pagination)) {
-            return [$url];
+            return [];
         }
 
         $lis = $pagination->find('a');
