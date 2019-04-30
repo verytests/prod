@@ -31,7 +31,10 @@ class ParseTestController extends BaseController
 
         $categories = $testService->getCategories();
 
-        $available = $this->getAvailableAmount($categories);
+        /** @var HtmlTestParser $testParser */
+        $testParser = $this->get('app.htmlTestParser');
+
+        $available = $testParser->getAvailableAmount($categories);
 
         return $this->render('admin/parse_test/parse_test.html.twig', [
             'categories' => $categories,
@@ -180,28 +183,5 @@ class ParseTestController extends BaseController
 
         return $this->successResponse();
 
-    }
-
-    public function getAvailableAmount($categories)
-    {
-        $connection = $this->getDoctrine()->getConnection();
-        $result = [];
-
-        $sql = '
-        SELECT COUNT(id) as amount, category_id FROM parsed_links WHERE category_id = :catId AND is_added = :status
-        ';
-
-        foreach ($categories as $category) {
-            $params = [
-                'catId' => $category->getId(),
-                'status' => 0
-            ];
-
-            $query = $connection->prepare($sql);
-            $query->execute($params);
-            $result[] = $query->fetch();
-        }
-
-        return $result;
     }
 }

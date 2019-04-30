@@ -73,6 +73,8 @@ services:
     app.htmlTestParser:
         class: AppBundle\Services\HtmlTestParser
         public: true
+        arguments:
+            - '@doctrine.orm.entity_manager'
 
     app.categoryParser:
         class: AppBundle\Services\CategoryParser
@@ -93,3 +95,9 @@ services:
             - '@AppBundle\Manager\UserStatistic\SavedTestsManager'
             - '@AppBundle\Factory\UserStatistic\PassedFactory'
             - '@AppBundle\Manager\UserStatistic\PassedManager'
+
+    app.db:
+        class: AppBundle\Services\DbService
+        public: true
+        arguments:
+            - '@doctrine.orm.entity_manager'

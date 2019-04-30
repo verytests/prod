@@ -2,6 +2,9 @@
 
 namespace AppBundle\Services;
 
+use AppBundle\Utils\PregUtil;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use PHPHtmlParser\Dom;
 
 class HtmlTestParser
@@ -12,12 +15,18 @@ class HtmlTestParser
     private $domParser;
 
     /**
+     * @var EntityManager
+     */
+    private $em;
+
+    /**
      * HtmlTestParser constructor.
      */
-    public function __construct()
+    public function __construct(EntityManagerInterface $em)
     {
         $domParser = new Dom();
         $this->domParser = $domParser;
+        $this->em = $em;
     }
 
     private function getTestData($url, $category = 1, $subCategory = 1)
@@ -29,8 +38,8 @@ class HtmlTestParser
         $description= $this->domParser->find('h2[itemprop="description"]')->text();
 
         $resultTestData = [
-            'name' => $this->remove_emoji(html_entity_decode($header, ENT_QUOTES)),
-            'desc' => $this->remove_emoji(html_entity_decode($header, ENT_QUOTES)),
+            'name' => PregUtil::pregText(html_entity_decode($header, ENT_QUOTES)),
+            'desc' => PregUtil::pregText(html_entity_decode($description, ENT_QUOTES)),
             'testImage' => '',
             'category' => $category,
             'subCategory' => $subCategory,
@@ -40,7 +49,7 @@ class HtmlTestParser
         $questionsHtml = $this->domParser->find('.questions');
 
         for($i = 0; $i < count($questionsHtml); $i++) {
-            $question = $this->remove_emoji(html_entity_decode($questionsHtml[$i]->find('.frage')->find('fieldset')->find('div')->text(), ENT_QUOTES));
+            $question = PregUtil::pregText(html_entity_decode($questionsHtml[$i]->find('.frage')->find('fieldset')->find('div')->text(), ENT_QUOTES));
 
             $labelsHtml = $questionsHtml[$i]->find('.antworten')->find('label');
             $inputsHtml = $questionsHtml[$i]->find('.antworten')->find('input');
@@ -48,7 +57,7 @@ class HtmlTestParser
             $answers = [];
             for($x = 0; $x < count($labelsHtml); $x++) {
                 $answers[] = [
-                    'text' => $this->remove_emoji(html_entity_decode($labelsHtml[$x]->text(), ENT_QUOTES)),
+                    'text' => PregUtil::pregText(html_entity_decode($labelsHtml[$x]->text(), ENT_QUOTES)),
                     'value' => $inputsHtml[$x]->getAttribute('value')
                 ];
             }
@@ -235,10 +244,26 @@ class HtmlTestParser
         return $testData;
     }
 
-    public function remove_emoji($text)
+    public function getAvailableAmount($categories)
     {
-        $res = preg_replace('/[[:^print:]]/', '', $text);
+        $connection = $this->em->getConnection();
+        $result = [];
 
-        return preg_replace("/[^a-zA-Z.,-?0-9\s]/", "", $res);
+        $sql = '
+        SELECT COUNT(id) as amount, category_id FROM parsed_links WHERE category_id = :catId AND is_added = :status
+        ';
+
+        foreach ($categories as $category) {
+            $params = [
+                'catId' => $category->getId(),
+                'status' => 0
+            ];
+
+            $query = $connection->prepare($sql);
+            $query->execute($params);
+            $result[] = $query->fetch();
+        }
+
+        return $result;
     }
 }

@@ -3,11 +3,10 @@
 namespace AppBundle\Controller\Admin;
 
 use AppBundle\Controller\BaseController;
-use AppBundle\Entity\Others\ParsedLink;
-use AppBundle\Model\ServiceResponse;
 use AppBundle\Services\CategoryParser;
-use AppBundle\Services\HtmlTestParser;
+use AppBundle\Services\DbService;
 use AppBundle\Services\TestItemService;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -20,13 +19,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryParseController extends BaseController
 {
     /**
+     * @param EntityManager $em
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @Route("/categoryparser", name="category_parser", methods={"GET"})
      */
     public function indexAction()
     {
-        $this->cleanDb();
+        /** @var DbService $dbService */
+        $dbService = $this->get('app.db');
+
+        $dbService->cleanParsedLinksFromDuplicates();
+        $dbService->cleanKeywords();
+
         /** @var TestItemService $testService */
         $testService = $this->get('app.testItem');
 
@@ -84,33 +89,5 @@ class CategoryParseController extends BaseController
         }
 
         return $this->successResponse();
-    }
-
-    public function cleanDb()
-    {
-        $conn = $this->getDoctrine()->getConnection();
-        $em = $this->getDoctrine()->getManager();
-
-        $sql = "
-            SELECT link
-            FROM parsed_links
-            GROUP
-            BY link
-            HAVING COUNT(*) > 1
-        ";
-
-        $query = $conn->prepare($sql);
-        $query->execute();
-
-        $res = $query->fetchAll();
-
-        foreach ($res as $item) {
-            $links = $em->getRepository(ParsedLink::class)->findBy(['link' => $item['link']]);
-
-            for($i = 1; $i < count($links); $i++) {
-                $em->remove($links[$i]);
-                $em->flush();
-            }
-        }
     }
 }
