@@ -30,7 +30,6 @@ class CategoryParseController extends BaseController
         $dbService = $this->get('app.db');
 
         $dbService->cleanParsedLinksFromDuplicates();
-        $dbService->cleanKeywords();
 
         /** @var TestItemService $testService */
         $testService = $this->get('app.testItem');

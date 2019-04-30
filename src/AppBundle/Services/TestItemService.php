@@ -164,8 +164,6 @@ class TestItemService
             }
         }
 
-        $this->logger->info(LogUtil::constructData(LogUtil::ADD_TEST_LOG_SUCCESS), Log::SOURCE_ADD_TEST, Log::SECTION_ADMIN);
-
         return [ServiceResponse::SUCCESS];
     }
 
@@ -270,29 +268,14 @@ class TestItemService
     {
         $test = $this->em->getRepository(TestItem::class)->getTestById($id);
 
-        $testName = '';
-
         foreach ($test as $element) {
-            if($element instanceof TestItem) {
-                $testName = $element->getName();
-            }
-
             try {
                 $this->em->remove($element);
                 $this->em->flush();
             } catch (\Exception $e) {
-                $this->logger->error(
-                    LogUtil::constructData(LogUtil::REMOVE_TEST_LOG_ERROR, ['msg' => $e->getMessage()]),
-                    Log::SOURCE_REMOVE_TEST, Log::SECTION_ADMIN);
                 return ServiceResponse::ERROR;
             }
         }
-
-        $this->logger->warning(
-            LogUtil::constructData(LogUtil::REMOVE_TEST_LOG_SUCCESS, [
-                'testName' => $testName
-            ]),
-            Log::SOURCE_REMOVE_TEST, Log::SECTION_ADMIN);
 
         return ServiceResponse::SUCCESS;
     }
@@ -302,25 +285,13 @@ class TestItemService
        $test = $this->em->getRepository(TestItem::class)->findOneBy(['id' => $id]);
 
        $test->setIsChecked($value);
-       $testName = $test->getName();
 
        try {
            $this->em->persist($test);
            $this->em->flush();
        } catch (\Exception $e) {
-           $this->logger->error(
-               LogUtil::constructData(LogUtil::UPDATE_TEST_STATUS_ERROR, [
-                   'msg' => $e->getMessage(),
-                   'testName' => $testName
-               ]),
-               Log::SOURCE_UPDATE_TEST_STATUS, Log::SECTION_ADMIN);
-
            return ServiceResponse::ERROR;
        }
-
-        $this->logger->info(
-            LogUtil::constructData(LogUtil::UPDATE_TEST_STATUS_SUCCESS, ['testName' => $testName]),
-            Log::SOURCE_UPDATE_TEST_STATUS, Log::SECTION_ADMIN);
 
        return ServiceResponse::SUCCESS;
     }
