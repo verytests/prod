@@ -41,7 +41,7 @@ class SearchController extends BaseController
             $request->query->getInt('limit', 12)
         );
 
-        return $this->render('site/search/category.html.twig', [
+        return $this->render('site/search/search.html.twig', [
             'tests' => $tests,
             'search_query' => $query,
             'keywords' => $keywords
