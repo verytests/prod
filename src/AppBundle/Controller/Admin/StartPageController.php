@@ -23,6 +23,9 @@ class StartPageController extends BaseController
      */
     public function startPage()
     {
-        return $this->render('admin/start_page/start_page.html.twig');
+        $log = file_get_contents('https://verytests.com/var/logs/prod.log');
+        return $this->render('admin/start_page/start_page.html.twig', [
+            'log' => $log
+        ]);
     }
 }
