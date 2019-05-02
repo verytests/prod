@@ -244,20 +244,35 @@ class HtmlTestParser
         return $testData;
     }
 
-    public function getAvailableAmount($categories)
+    public function getAvailableAmount($categories, $isForParse = true)
     {
         $connection = $this->em->getConnection();
         $result = [];
 
-        $sql = '
+
+        if($isForParse) {
+            $sql = '
         SELECT COUNT(id) as amount, category_id FROM parsed_links WHERE category_id = :catId AND is_added = :status
         ';
+        } else {
+            $sql = '
+        SELECT COUNT(id) as amount, category_id FROM test_item WHERE category_id = :catId
+        ';
+        }
+
 
         foreach ($categories as $category) {
-            $params = [
-                'catId' => $category->getId(),
-                'status' => 0
-            ];
+
+            if($isForParse) {
+                $params = [
+                    'catId' => $category->getId(),
+                    'status' => 0
+                ];
+            } else {
+                $params = [
+                    'catId' => $category->getId()
+                ];
+            }
 
             $query = $connection->prepare($sql);
             $query->execute($params);
