@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Admin;
 use AppBundle\Controller\BaseController;
 use AppBundle\Entity\Tests\TestItem;
 use AppBundle\Model\ServiceResponse;
+use AppBundle\Services\HtmlTestParser;
 use AppBundle\Services\TestItemService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -31,6 +32,11 @@ class ManageTestsController extends BaseController
         $categories = $testService->getCategories();
         $query = $testService->getTestsByCategory($testCategory, $isChecked);
 
+        /** @var HtmlTestParser $testParser */
+        $testParser = $this->get('app.htmlTestParser');
+
+        $available = $testParser->getAvailableAmount($categories, false);
+
         if(empty($query)) {
             $query = $testService->getAllNonCheckedTests();
         }
@@ -45,7 +51,8 @@ class ManageTestsController extends BaseController
 
         return $this->render('admin/manage_tests/manage_tests.html.twig', [
             'categories' => $categories,
-            'tests' => $tests
+            'tests' => $tests,
+            'available' => $available
         ]);
     }
 
