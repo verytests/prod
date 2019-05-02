@@ -76,6 +76,13 @@
                 </tbody>
             </table>
         </div>
+        <div class="card-footer">
+            <nav aria-label="Page navigation example">
+                <div class="pagination">
+                    {{ knp_pagination_render(tests, 'others/twitter_bootstrap_v4_pagination.html.twig') }}
+                </div>
+            </nav>
+        </div>
         <div class="container-fluid">
             <table class="table table-striped">
                 <thead>
@@ -97,13 +104,6 @@
                 {% endfor %}
                 </tbody>
             </table>
-        </div>
-        <div class="card-footer">
-            <nav aria-label="Page navigation example">
-                <div class="pagination">
-                    {{ knp_pagination_render(tests, 'others/twitter_bootstrap_v4_pagination.html.twig') }}
-                </div>
-            </nav>
         </div>
     </div>
 {% endblock %}
