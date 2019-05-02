@@ -23,7 +23,12 @@
         </form>
 
         <div class="container-fluid">
-            <table class="table table-striped">
+            <div class="display-5 divset">
+                <form method="post" action="{{ path('admin_set_checked_all') }}">
+                    <input type="submit" class="btn btn-outline-primary" value="Set checked all">
+                </form>
+            </div>
+            <table class="table table-striped divset">
                 <thead>
                 <tr>
                     <th scope="col">#</th>

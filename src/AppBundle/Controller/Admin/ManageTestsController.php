@@ -151,8 +151,25 @@ class ManageTestsController extends BaseController
 
         $test = $testService->getTestById($testId);
 
-        return $this->render('site/test/defaultMainImgSrc.html.twig', [
+        return $this->render('site/test/pass_test.html.twig', [
             'test' => $test
         ]);
+    }
+
+    /**
+     * @Route("/setcheckedall", name="set_checked_all")
+     */
+    public function setCheckedAll()
+    {
+        /** @var  TestItemService $testService */
+        $testService = $this->get('app.testItem');
+
+        $query = $testService->getAllNonCheckedTests();
+
+        foreach ($query as $test) {
+            $testService->setIsChecked($test->getId(), 1);
+        }
+
+        return $this->successResponse();
     }
 }
