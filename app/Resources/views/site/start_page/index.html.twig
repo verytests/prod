@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="container-fluid divset">
-        <div class="row justify-content-center">
+        <div class="row justify-content-around">
             {% if topStatistic.day is not empty %}
 
                 {% for testDay in topStatistic.day %}
@@ -32,7 +32,7 @@
         </div>
     </div>
     <div class="container-fluid divset">
-        <div class="row justify-content-center">
+        <div class="row justify-content-around">
             {% if topStatistic.week is not empty %}
                 {% for testWeek in topStatistic.week %}
 
@@ -56,7 +56,7 @@
         </div>
     </div>
     <div class="container-fluid divset">
-        <div class="row justify-content-center">
+        <div class="row justify-content-around">
             {% if topStatistic.month is not empty %}
                 {% for testMonth in topStatistic.month %}
 

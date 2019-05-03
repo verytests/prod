@@ -27,7 +27,9 @@
         {% block stylesheets %}
             <link rel="stylesheet" type="text/css" href="{{ asset('public/libs/css/animate.css') }}">
             <link rel="stylesheet" type="text/css" href="{{ asset('public/libs/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('public/libs/css/gradientLetter.css') }}">
             <link rel="stylesheet" type="text/css" href="{{ asset('public/includes/css/main/specs.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('public/extensions/particleButtons/css/particles.css') }}">
         {% endblock %}
 
         {% block javascripts %}
@@ -45,6 +47,7 @@
     <div class="bg"></div>
     <div class="bg bg2"></div>
     <div class="bg bg3"></div>
+
         {% block layout %}
 
             {% block navbar %}
@@ -55,7 +58,12 @@
 
             {% endblock %}
 
+            {% block footer %}
+
+            {% endblock %}
+
         {% endblock %}
+    <script rel="script" src="{{ asset('public/libs/js/GradientLetter.js') }}" ></script>
 
     </body>
 

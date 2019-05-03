@@ -1,0 +1,26 @@
+
+
+.gradientLetter {
+  color: #333;
+  
+  background: linear-gradient(-45deg, #cb60b3 0%, #c146a1 50%, #a80077 51%, #3B3B3B 51%, #3B3B3B 100%);
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important; }
+
+.gradientLetter-span {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; }
+
+.gradientLetter-yellow .gradientLetter-span {
+  background-image: linear-gradient(135deg, #e6cc3c 49%, #e6cc3c 49%, #d8bc1c 49%, #d8bc1c 100%); }
+
+.gradientLetter-violet .gradientLetter-span {
+  background: linear-gradient(135deg, #fceabb 0%, #fccd4d 49%, #ECC03A 49%, #ECC03A 50%, #ECC03A 51%, #ECC03A 100%); }
+
+.gradientLetter-blue .gradientLetter-span {
+  background-image: linear-gradient(135deg, #CBC9F4 49%, #CBC9F4 49%, #a6a3ec 49%, #a6a3ec 100%); }
+
+.gradientLetter-green .gradientLetter-span {
+  background-image: linear-gradient(to right, #28b485, #7ed56f); }

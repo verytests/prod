@@ -66,7 +66,12 @@
                         </div>
                     </div>
                 </div>
-                {% if check == 'categories_all' or check == 'categories_popular' %}
+                {% if
+                    check == 'categories_all' or
+                    check == 'categories_popular' or
+                    check == 'categories_all_search' or
+                    check == 'categories_popular_search'
+                %}
                     <script>
                         $('#sub_categories').hide();
                     </script>
@@ -76,7 +81,7 @@
 
     {% endif %}
     <div class="container-fluid" style="margin-left: 2%">
-        <div class="row">
+        <div class="row justify-content-around">
             {% for test in tests %}
 
                 {% embed 'site/test_item/test_item_block.html.twig' %}

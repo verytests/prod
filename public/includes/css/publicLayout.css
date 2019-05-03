@@ -43,3 +43,10 @@ body {
 #publicHeader {
     padding: 0;
 }
+
+@media (min-width: 1200px) {
+    body {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}

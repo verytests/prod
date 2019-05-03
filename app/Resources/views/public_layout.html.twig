@@ -2,6 +2,8 @@
 
 {% block layout %}
     <link rel="stylesheet" type="text/css" href="{{ asset('public/includes/css/publicLayout.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/includes/css/footer.css') }}">
+
     <div class="container-fluid" id="publicHeader">
         <div class="row" id="publicHeaderRow">
             <div class="card bg-light col-12">
@@ -23,9 +25,13 @@
     <div class="container-fluid" id="layout" style="margin-bottom: 25px">
         <div class="row" id="layoutRow">
             <div class="col-3" id="publicNav">
-                {% block navbar %}
+                <div class="card bg-light">
+                    <div class="card-body">
+                    {% block navbar %}
 
-                {% endblock %}
+                    {% endblock %}
+                    </div>
+                </div>
             </div>
             <div class="col-9" id="publicBody">
                 <div class="card bg-light">
@@ -38,4 +44,5 @@
             </div>
         </div>
     </div>
+
 {% endblock %}
