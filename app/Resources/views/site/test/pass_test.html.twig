@@ -6,12 +6,12 @@
 {% block title %}{{ test.test.name }}{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
+    <div class="container-fluid testHolder">
         <div class="text-center mobileText">
-            <div>
+            <div class="card-header">
                 <h1 class="gradientLetter">{{ test.test.name }}</h1>
             </div>
-            <div class="card-body">
+            <div class="card-body testHolder">
                 <div class="divset">
                     <img class="img-thumbnail"
                     src="{% if test.test.mainImage == '' %}{% embed 'site/test_item/default_main_src.html.twig' %}{% endembed %}{% else %}{{ test.test.mainImage }}{% endif %}"
@@ -69,4 +69,13 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            if($(window).width() < 950) {
+                $('.testHolder').each(function () {
+                    $(this).css('padding', '0');
+                });
+            }
+        })
+    </script>
 {% endblock %}
