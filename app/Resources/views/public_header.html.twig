@@ -2,11 +2,12 @@
 
 {% block publicHeader %}
     <link rel="stylesheet" type="text/css" href="{{ asset('public/includes/css/publicHeader.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/extensions/rainbow/rainbow.css') }}">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{{ path('site_start_page') }}">
             <img src="{{ asset('favicon.ico') }}" width="30" height="30" class="d-inline-block align-top" alt="">
-            VeryTests.com
+            <span class="animated-brand">VeryTests.com</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
