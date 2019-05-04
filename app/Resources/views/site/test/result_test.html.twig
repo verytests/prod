@@ -5,8 +5,9 @@
 
 {% block body %}
 <div class="container-fluid">
-    <div class="alert alert-info text-center">
-        <h3>Your result: </h3>
+    <div class="card-header text-center mobileText">
+        <h1>Your result of the test</h1>
+        <h1 class="gradientLetter">{{ test.test.name }}</h1>
     </div>
     <div class="jumbotron text-center">
         <h5>{{ result.text }}</h5>
