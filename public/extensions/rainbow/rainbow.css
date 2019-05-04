@@ -5,7 +5,7 @@
     color: rgba(255,255,255,0.2);
     background: url("rainbow.jpg") repeat-x;
     -webkit-background-clip: text;
-    animation: fire 15s linear infinite;
+    animation: fire 10s infinite;
 }
 
 @keyframes fire{
